@@ -1,333 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ms">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Remedial Module (TP1 & TP2)</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Lexend:wght@500;700&display=swap" rel="stylesheet">
+    <title>Rekod English Remedial (TP1 & TP2)</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Lexend', sans-serif; }
-        body { background-color: #f0fdf4; padding: 20px; display: flex; justify-content: center; }
-        .app-container { width: 100%; max-width: 800px; background: #ffffff; border: 4px solid #bbf7d0; border-radius: 24px; padding: 25px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
-        
-        /* Header Title */
-        .title-box { text-align: center; background: #ffedd5; border: 3px dashed #f97316; border-radius: 16px; padding: 15px; margin-bottom: 20px; }
-        .title-box h1 { font-family: 'Fredoka One', cursive; color: #ea580c; font-size: 2.2rem; }
-        
-        /* Set Menu */
-        .set-menu { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 15px; margin-bottom: 20px; scrollbar-width: thin; }
-        .btn-set { background: #e2e8f0; color: #334155; border: 2px solid #cbd5e1; padding: 10px 18px; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; white-space: nowrap; transition: 0.2s; }
-        .btn-set.active { background: #ea580c; color: white; border-color: #c2410c; transform: scale(1.05); }
-
-        /* Section Cards */
-        .card { background: #f8fafc; border: 3px solid #cbd5e1; border-radius: 20px; padding: 20px; margin-bottom: 25px; }
-        .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
-        .card-header h2 { font-family: 'Fredoka One', cursive; font-size: 1.8rem; color: #0284c7; }
-
-        /* Reading Passage Style */
-        .passage-box { background: #eff6ff; border-left: 8px solid #3b82f6; padding: 20px; border-radius: 12px; font-size: 1.6rem; line-height: 2.3rem; color: #1e293b; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
-        .btn-audio { background: #22c55e; color: white; border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 1.8rem; cursor: pointer; box-shadow: 0 4px 10px rgba(34,197,94,0.4); flex-shrink: 0; }
-        .btn-audio:active { transform: scale(0.95); }
-
-        /* Big Visuals */
-        .big-visual { font-size: 5.5rem; text-align: center; margin: 15px 0; filter: drop-shadow(0 10px 8px rgba(0,0,0,0.15)); }
-
-        /* Question Options */
-        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; }
-        .btn-option { background: #ffffff; border: 3px solid #e2e8f0; padding: 18px; border-radius: 16px; font-size: 1.4rem; font-weight: 700; color: #334155; cursor: pointer; transition: all 0.2s; text-align: center; }
-        .btn-option:hover { border-color: #3b82f6; background: #f0f9ff; }
-        .btn-option.correct { background: #dcfce7 !important; border-color: #22c55e !important; color: #15803d !important; }
-        .btn-option.wrong { background: #fee2e2 !important; border-color: #ef4444 !important; color: #b91c1c !important; }
-
-        /* Big Spelling Input */
-        .spelling-input { width: 100%; font-size: 2rem; text-align: center; letter-spacing: 5px; padding: 10px; border: 3px solid #94a3b8; border-radius: 12px; margin-top: 10px; text-transform: uppercase; font-weight: bold; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; color: #fff; }
+        .card { width: 100%; max-width: 500px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+        h2 { text-align: center; margin-bottom: 5px; color: #f97316; font-size: 1.5rem; }
+        p.desc { text-align: center; color: #94a3b8; font-size: 0.85rem; margin-bottom: 25px; }
+        .form-group { margin-bottom: 18px; text-align: left; }
+        label { display: block; font-size: 0.85rem; margin-bottom: 6px; color: #cbd5e1; font-weight: 600; }
+        input, select, textarea { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(0, 0, 0, 0.2); color: #fff; font-size: 0.9rem; outline: none; }
+        input:focus, select:focus, textarea:focus { border-color: #f97316; }
+        option { background: #1e293b; color: #fff; }
+        .btn-submit { width: 100%; padding: 14px; border: none; border-radius: 10px; background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); color: #fff; font-weight: 600; font-size: 1rem; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        .btn-submit:hover { opacity: 0.9; transform: translateY(-2px); }
+        .back-link { display: block; text-align: center; margin-top: 15px; color: #94a3b8; text-decoration: none; font-size: 0.85rem; }
+        .back-link:hover { color: #fff; }
+        #statusMsg { text-align: center; margin-top: 15px; font-size: 0.9rem; font-weight: 600; }
     </style>
 </head>
 <body>
 
-<div class="app-container">
-
-    <div class="title-box">
-        <h1>🌟 ENGLISH KIDS CORNER 🌟</h1>
-        <p id="set-title" style="font-size: 1.2rem; font-weight: bold; color: #c2410c;">Loading...</p>
-    </div>
-
-    <!-- SET MENU 1 - 20 -->
-    <div class="set-menu" id="set-menu-container"></div>
-
-    <!-- PART 1: READING SHORT PASSAGE -->
     <div class="card">
-        <div class="card-header">
-            <i class="fa-solid fa-book-open-reader" style="font-size: 2rem; color: #0284c7;"></i>
-            <h2>1. Read Together</h2>
-        </div>
-        <div class="passage-box">
-            <span id="text-to-read"></span>
-            <button class="btn-audio" onclick="playAudio()"><i class="fa-solid fa-volume-high"></i></button>
-        </div>
-        <div class="big-visual" id="read-visual"></div>
-        <p style="font-size: 1.4rem; font-weight: bold; color: #475569;" id="read-question"></p>
-        <div class="options-grid" id="read-options"></div>
+        <h2><i class="fa-solid fa-child-reaching"></i> English Remedial</h2>
+        <p class="desc">Borang Input Rekod Murid TP1 & TP2</p>
+
+        <form id="remedialForm">
+            <div class="form-group">
+                <label>Nama Murid</label>
+                <input type="text" id="nama" placeholder="Contoh: Muhammad Ali" required>
+            </div>
+
+            <div class="form-group">
+                <label>Kelas</label>
+                <input type="text" id="kelas" placeholder="Contoh: 3 Cemerlang" required>
+            </div>
+
+            <div class="form-group">
+                <label>Tahap Penguasaan (TP)</label>
+                <select id="tp" required>
+                    <option value="">-- Pilih TP --</option>
+                    <option value="TP1">TP 1</option>
+                    <option value="TP2">TP 2</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Kemahiran / Catatan Perkembangan</label>
+                <textarea id="catatan" rows="3" placeholder="Contoh: Perlu bimbingan mengeja perkataan asas..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit" id="btnSubmit">Hantar Rekod</button>
+        </form>
+
+        <div id="statusMsg"></div>
+
+        <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Kembali ke Portal Utama</a>
     </div>
 
-    <!-- PART 2: SPELLING PRACTICE -->
-    <div class="card">
-        <div class="card-header">
-            <i class="fa-solid fa-spell-check" style="font-size: 2rem; color: #9333ea;"></i>
-            <h2>2. Spelling Practice</h2>
-        </div>
-        <p style="font-size: 1.4rem; font-weight: bold; text-align: center; color: #475569;">Fill in the missing letter:</p>
-        <div class="big-visual" id="spell-visual"></div>
-        <div style="text-align: center;">
-            <p style="font-size: 2rem; font-weight: bold; color: #7e22ce;" id="spell-hint"></p>
-            <input type="text" id="spell-input" class="spelling-input" maxlength="1" placeholder="?" onkeyup="checkSpelling(this)">
-            <p id="spelling-msg" style="font-size: 1.3rem; margin-top: 10px; font-weight: bold;"></p>
-        </div>
-    </div>
+    <script>
+        // Pautan Apps Script cikgu
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzh5OHu2OnB10rC5-8VsLWZ0TPI-Pr1SGGYRUC6_SKgwIQjxWuxMviG6n5qRy3dgreV/exec';
 
-    <!-- PART 3: VOCABULARY -->
-    <div class="card">
-        <div class="card-header">
-            <i class="fa-solid fa-shapes" style="font-size: 2rem; color: #16a34a;"></i>
-            <h2>3. Vocabulary Drill</h2>
-        </div>
-        <div class="big-visual" id="vocab-visual"></div>
-        <p style="font-size: 1.4rem; font-weight: bold; text-align: center; color: #334155;" id="vocab-question">What object is this?</p>
-        <div class="options-grid" id="vocab-options"></div>
-    </div>
+        document.getElementById('remedialForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('btnSubmit');
+            const statusMsg = document.getElementById('statusMsg');
+            
+            btn.disabled = true;
+            btn.innerText = 'Sedang Dihantar...';
+            statusMsg.innerText = '';
 
-</div>
+            const payload = {
+                nama: document.getElementById('nama').value,
+                kelas: document.getElementById('kelas').value,
+                tp: document.getElementById('tp').value,
+                catatan: document.getElementById('catatan').value
+            };
 
-<script>
-    // QUESTION DATASETS (SET 1 UNTIL SET 8 READY)
-    const datasets = {
-        1: {
-            title: "Set 1: My Classroom (Year 1)",
-            passage: "This is Adam. Adam has a red bag. The bag is on the desk.",
-            readVisual: "🎒",
-            readQ: "What color is the bag?",
-            readOpts: [{t: "Blue", c: false}, {t: "Red", c: true}],
-            spellVisual: "🪑",
-            spellHint: "C H A _ R",
-            spellAns: "I",
-            vocabVisual: "✏️",
-            vocabQ: "What object is this?",
-            vocabOpts: [{t: "Pencil", c: true}, {t: "Ruler", c: false}]
-        },
-        2: {
-            title: "Set 2: My Toys (Year 1)",
-            passage: "Look at Ben. Ben has a big blue kite. He plays in the park.",
-            readVisual: "🪁",
-            readQ: "What toy does Ben have?",
-            readOpts: [{t: "Kite", c: true}, {t: "Ball", c: false}],
-            spellVisual: "⚽",
-            spellHint: "B A _ L",
-            spellAns: "L",
-            vocabVisual: "🚗",
-            vocabQ: "What toy is this?",
-            vocabOpts: [{t: "Doll", c: false}, {t: "Car", c: true}]
-        },
-        3: {
-            title: "Set 3: Pet Show (Year 1)",
-            passage: "Siti has a small cat. The cat is under the chair. It likes milk.",
-            readVisual: "🐱",
-            readQ: "Where is the cat?",
-            readOpts: [{t: "On the chair", c: false}, {t: "Under the chair", c: true}],
-            spellVisual: "🐶",
-            spellHint: "D _ G",
-            spellAns: "O",
-            vocabVisual: "🐸",
-            vocabQ: "What animal is this?",
-            vocabOpts: [{t: "Frog", c: true}, {t: "Duck", c: false}]
-        },
-        4: {
-            title: "Set 4: Lunchtime (Year 2)",
-            passage: "I have an apple and pizza for lunch. I like red apples.",
-            readVisual: "🍕",
-            readQ: "What fruit does he have?",
-            readOpts: [{t: "Banana", c: false}, {t: "Apple", c: true}],
-            spellVisual: "🍌",
-            spellHint: "B A N A _ A",
-            spellAns: "N",
-            vocabVisual: "🥛",
-            vocabQ: "What drink is this?",
-            vocabOpts: [{t: "Milk", c: true}, {t: "Water", c: false}]
-        },
-        5: {
-            title: "Set 5: Free Time (Year 2)",
-            passage: "Today is Sunday. Ana rides a bike on Sunday. She is happy.",
-            readVisual: "🚲",
-            readQ: "What day does Ana ride her bike?",
-            readOpts: [{t: "Sunday", c: true}, {t: "Monday", c: false}],
-            spellVisual: "⚽",
-            spellHint: "F O O T B A _ L",
-            spellAns: "L",
-            vocabVisual: "🏊",
-            vocabQ: "What activity is this?",
-            vocabOpts: [{t: "Swimming", c: true}, {t: "Dancing", c: false}]
-        },
-        6: {
-            title: "Set 6: In The Garden (Year 2)",
-            passage: "Look at the garden. There is a red flower. A butterfly is on the flower.",
-            readVisual: "🦋",
-            readQ: "What is on the flower?",
-            readOpts: [{t: "A bee", c: false}, {t: "A butterfly", c: true}],
-            spellVisual: "🌸",
-            spellHint: "F L O W _ R",
-            spellAns: "E",
-            vocabVisual: "🌳",
-            vocabQ: "What object is this?",
-            vocabOpts: [{t: "Tree", c: true}, {t: "Plant", c: false}]
-        },
-        7: {
-            title: "Set 7: At The Beach (Year 2)",
-            passage: "Kim is at the beach. He makes a big sandcastle. He is wearing a blue hat.",
-            readVisual: "🏖️",
-            readQ: "What is Kim wearing?",
-            readOpts: [{t: "A blue hat", c: true}, {t: "A red cap", c: false}],
-            spellVisual: "🐚",
-            spellHint: "S H _ L L",
-            spellAns: "E",
-            vocabVisual: "🦀",
-            vocabQ: "What animal is this?",
-            vocabOpts: [{t: "Fish", c: false}, {t: "Crab", c: true}]
-        },
-        8: {
-            title: "Set 8: Weather & Clothes (Year 2)",
-            passage: "It is rainy today. Sarah puts on her yellow raincoat. She opens her umbrella.",
-            readVisual: "🌧️",
-            readQ: "What is the weather today?",
-            readOpts: [{t: "Sunny", c: false}, {t: "Rainy", c: true}],
-            spellVisual: "☂️",
-            spellHint: "U M B R _ L L A",
-            spellAns: "E",
-            vocabVisual: "🧥",
-            vocabQ: "What clothing is this?",
-            vocabOpts: [{t: "Jacket", c: true}, {t: "Shirt", c: false}]
-        }
-    };
-
-    let currentSet = 1;
-
-    // Render Set Buttons (Set 1 - 20)
-    function renderMenu() {
-        const menu = document.getElementById("set-menu-container");
-        menu.innerHTML = "";
-        for(let i = 1; i <= 20; i++) {
-            const btn = document.createElement("button");
-            btn.className = `btn-set ${i === currentSet ? 'active' : ''}`;
-            btn.innerText = `Set ${i}`;
-            btn.onclick = () => loadSet(i);
-            menu.appendChild(btn);
-        }
-    }
-
-    // Load Selected Set
-    function loadSet(setNum) {
-        currentSet = setNum;
-        renderMenu();
-
-        const data = datasets[setNum];
-        
-        // Default if set is coming soon
-        if(!data) {
-            document.getElementById("set-title").innerText = `Set ${setNum} (Coming Soon)`;
-            document.getElementById("text-to-read").innerText = "Questions for this set are being updated...";
-            document.getElementById("read-visual").innerText = "⏳";
-            document.getElementById("read-question").innerText = "";
-            document.getElementById("read-options").innerHTML = "";
-            document.getElementById("spell-visual").innerText = "⏳";
-            document.getElementById("spell-hint").innerText = "- - -";
-            document.getElementById("vocab-visual").innerText = "⏳";
-            document.getElementById("vocab-question").innerText = "";
-            document.getElementById("vocab-options").innerHTML = "";
-            return;
-        }
-
-        // Load Content
-        document.getElementById("set-title").innerText = data.title;
-        document.getElementById("text-to-read").innerText = data.passage;
-        document.getElementById("read-visual").innerText = data.readVisual;
-        document.getElementById("read-question").innerText = data.readQ;
-
-        // Load Reading Options
-        const readOpts = document.getElementById("read-options");
-        readOpts.innerHTML = "";
-        data.readOpts.forEach(opt => {
-            const btn = document.createElement("button");
-            btn.className = "btn-option";
-            btn.innerText = opt.t;
-            btn.onclick = () => checkAnswer(btn, opt.c);
-            readOpts.appendChild(btn);
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            })
+            .then(() => {
+                statusMsg.style.color = '#10b981';
+                statusMsg.innerText = '✅ Rekod berjaya disimpan ke Google Sheet!';
+                document.getElementById('remedialForm').reset();
+                btn.disabled = false;
+                btn.innerText = 'Hantar Rekod';
+            })
+            .catch(error => {
+                statusMsg.style.color = '#ef4444';
+                statusMsg.innerText = '❌ Ralat penghantaran. Sila cuba lagi.';
+                btn.disabled = false;
+                btn.innerText = 'Hantar Rekod';
+            });
         });
-
-        // Load Spelling
-        document.getElementById("spell-visual").innerText = data.spellVisual;
-        document.getElementById("spell-hint").innerText = data.spellHint;
-        const input = document.getElementById("spell-input");
-        input.value = "";
-        input.style.backgroundColor = "#fff";
-        input.style.borderColor = "#94a3b8";
-        document.getElementById("spelling-msg").innerText = "";
-
-        // Load Vocabulary
-        document.getElementById("vocab-visual").innerText = data.vocabVisual;
-        document.getElementById("vocab-question").innerText = data.vocabQ || "What object is this?";
-        const vocabOpts = document.getElementById("vocab-options");
-        vocabOpts.innerHTML = "";
-        data.vocabOpts.forEach(opt => {
-            const btn = document.createElement("button");
-            btn.className = "btn-option";
-            btn.innerText = opt.t;
-            btn.onclick = () => checkAnswer(btn, opt.c);
-            vocabOpts.appendChild(btn);
-        });
-    }
-
-    // Audio Play Function
-    function playAudio() {
-        const text = document.getElementById("text-to-read").innerText;
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = "en-US";
-        utterance.rate = 0.8;
-        window.speechSynthesis.speak(utterance);
-    }
-
-    // Answer Checking
-    function checkAnswer(btn, isCorrect) {
-        if(isCorrect) {
-            btn.classList.add("correct");
-            btn.innerText += " 👏 (Correct!)";
-        } else {
-            btn.classList.add("wrong");
-            btn.innerText += " ❌ (Try Again)";
-        }
-    }
-
-    // Spelling Checking
-    function checkSpelling(input) {
-        const data = datasets[currentSet];
-        const msg = document.getElementById("spelling-msg");
-        if(!data) return;
-
-        if(input.value.toUpperCase() === data.spellAns) {
-            input.style.borderColor = "#22c55e";
-            input.style.backgroundColor = "#dcfce7";
-            msg.style.color = "#15803d";
-            msg.innerText = "Great job! That's correct 🎉";
-        } else if(input.value !== "") {
-            input.style.borderColor = "#ef4444";
-            input.style.backgroundColor = "#fee2e2";
-            msg.style.color = "#b91c1c";
-            msg.innerText = "Incorrect. Try another letter 😅";
-        }
-    }
-
-    // Initialize Page
-    loadSet(1);
-</script>
-
+    </script>
 </body>
 </html>
