@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Bahasa Inggeris - Utama</title>
     <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -96,22 +96,26 @@
         <p class="sub-title">Sila pilih modul pembelajaran anda</p>
 
             <div class="btn-group">
-    <!-- 1. Butang Get Smart Year 3 (Bawa ke login.html di getsmartyear3) -->
-    <a href="https://elly-suhailee.github.io/getsmartyear3/login.html" class="btn btn-getsmart">
-        <i class="fa-solid fa-rocket"></i> Get Smart Year 3
-    </a>
+            <!-- 1. Butang Get Smart Year 3 -->
+            <a href="https://elly-suhailee.github.io/getsmartyear3/" class="btn btn-getsmart">
+                <i class="fa-solid fa-rocket"></i> Get Smart Year 3
+            </a>
 
-    <!-- 2. Butang Remedial -->
-    <a href="remedial.html" class="btn btn-remedial">
-        <i class="fa-solid fa-star"></i> Remedial Practice (TP1 & TP2)
-    </a>
+            <!-- 2. Butang Remedial -->
+            <a href="remedial.html" class="btn btn-remedial">
+                <i class="fa-solid fa-star"></i> Remedial Practice (TP1 & TP2)
+            </a>
 
-    <!-- 3. Butang Rekod Guru -->
-    <button onclick="accessTeacherRecord()" class="btn btn-teacher">
-        <i class="fa-solid fa-user-lock"></i> Rekod Guru
-    </button>
-</div>
+            <!-- 3. Butang Rekod Guru -->
+            <button onclick="accessTeacherRecord()" class="btn btn-teacher">
+                <i class="fa-solid fa-user-lock"></i> Rekod Guru
+            </button>
         </div>
+   <!-- 3. Butang Rekod Guru -->
+            <button onclick="accessTeacherRecord()" class="btn btn-teacher">
+                <i class="fa-solid fa-user-lock"></i> Rekod Guru
+            </button>
+        </div> <!-- Ini baris 113 -->
 
         <p class="footer-text">Akses khas cikgu dilindungi kata laluan.</p>
     </div>
@@ -127,7 +131,6 @@
             let pass = prompt("Sila masukkan kata laluan Guru untuk mengakses Rekod Guru:");
             
             if (pass === null) {
-                // Jika cikgu tekan Cancel, tiada apa berlaku
                 return; 
             }
             
