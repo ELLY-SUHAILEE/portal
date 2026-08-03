@@ -95,9 +95,9 @@
         <h1 class="main-title"><i class="fa-solid fa-graduation-cap"></i> ENGLISH PORTAL</h1>
         <p class="sub-title">Sila pilih modul pembelajaran anda</p>
 
-            <div class="btn-group">
-            <!-- 1. Butang Get Smart Year 3 -->
-            <a href="https://elly-suhailee.github.io/getsmartyear3/" class="btn btn-getsmart">
+      <div class="btn-group">
+            <!-- 1. Butang Get Smart Year 3 (Bawa ke borang Nama & Kelas) -->
+            <a href="https://elly-suhailee.github.io/getsmartyear3/login.html" class="btn btn-getsmart">
                 <i class="fa-solid fa-rocket"></i> Get Smart Year 3
             </a>
 
@@ -110,37 +110,4 @@
             <button onclick="accessTeacherRecord()" class="btn btn-teacher">
                 <i class="fa-solid fa-user-lock"></i> Rekod Guru
             </button>
-        </div>
-   <!-- 3. Butang Rekod Guru -->
-            <button onclick="accessTeacherRecord()" class="btn btn-teacher">
-                <i class="fa-solid fa-user-lock"></i> Rekod Guru
-            </button>
-        </div> <!-- Ini baris 113 -->
-
-        <p class="footer-text">Akses khas cikgu dilindungi kata laluan.</p>
-    </div>
-
-    <script>
-        // MASUKKAN PAUTAN GOOGLE SHEET CIKGU DI SINI:
-        const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/1cBsiuCRK4KBL3_oSi0nka5iL7VA1rQJTJzeMdWL1EDc/edit?gid=0#gid=0'; 
-        
-        // TETAPKAN KATA LALUAN (PASSWORD) CIKGU DI SINI:
-        const TEACHER_PASSWORD = '123'; 
-
-        function accessTeacherRecord() {
-            let pass = prompt("Sila masukkan kata laluan Guru untuk mengakses Rekod Guru:");
-            
-            if (pass === null) {
-                return; 
-            }
-            
-            if (pass === TEACHER_PASSWORD) {
-                alert("Akses berjaya! Mengalihkan ke Rekod Guru...");
-                window.open(GOOGLE_SHEET_URL, '_blank');
-            } else {
-                alert("Kata laluan salah! Akses ditolak.");
-            }
-        }
-    </script>
-</body>
-</html>
+        </div>      
