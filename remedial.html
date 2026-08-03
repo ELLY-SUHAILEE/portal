@@ -13,29 +13,23 @@
         body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); min-height: 100vh; padding: 20px; color: #fff; font-size: 1.1rem; }
         .container { max-width: 800px; margin: 0 auto; background: rgba(255, 255, 255, 0.07); backdrop-filter: blur(12px); border: 2px solid rgba(255, 255, 255, 0.15); border-radius: 24px; padding: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
         
-        /* Headers */
         .header-title { text-align: center; color: #fbbf24; font-size: 2.2rem; margin-bottom: 5px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
         .header-subtitle { text-align: center; color: #cbd5e1; font-size: 1.1rem; margin-bottom: 25px; }
         
-        /* Student Info Box */
         .student-info { background: rgba(0, 0, 0, 0.3); border-radius: 16px; padding: 20px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.1); }
         .form-group { margin-bottom: 15px; }
         label { display: block; font-size: 1.1rem; margin-bottom: 8px; color: #38bdf8; font-weight: 600; }
         input[type="text"], select { width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #38bdf8; background: #0f172a; color: #fff; font-size: 1.1rem; outline: none; }
         select option { background: #0f172a; color: #fff; }
 
-        /* Skill Category Headers */
         .section-header { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); padding: 15px 20px; border-radius: 16px; margin: 35px 0 20px 0; font-size: 1.3rem; font-weight: 700; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4); }
         
-        /* Big & Clear Question Cards */
         .question-card { background: rgba(255, 255, 255, 0.05); border: 2px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 20px; margin-bottom: 25px; text-align: center; }
         .question-num { font-size: 1.2rem; color: #fbbf24; font-weight: 700; margin-bottom: 10px; text-align: left; }
         .question-text { font-size: 1.3rem; color: #ffffff; margin-bottom: 15px; line-height: 1.4; font-weight: 600; }
         
-        /* Big Pictures */
-        .q-img { width: 100%; max-width: 260px; height: 180px; object-fit: cover; border-radius: 16px; margin: 10px auto 20px auto; display: block; border: 4px solid #38bdf8; box-shadow: 0 8px 20px rgba(0,0,0,0.4); background: #fff; }
+        .q-img { width: 100%; max-width: 320px; height: 200px; object-fit: cover; border-radius: 16px; margin: 10px auto 20px auto; display: block; border: 4px solid #38bdf8; box-shadow: 0 8px 20px rgba(0,0,0,0.4); background: #fff; }
         
-        /* Answer Options Grid */
         .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 15px; }
         @media (max-width: 600px) { .options-grid { grid-template-columns: 1fr; } }
         
@@ -45,7 +39,6 @@
         input[type="radio"] { display: none; }
         input[type="radio"]:checked + .option-btn { background: #38bdf8; color: #0f172a; border-color: #38bdf8; font-weight: 700; transform: scale(1.02); }
         
-        /* Submit Button */
         .btn-submit { width: 100%; padding: 18px; border: none; border-radius: 16px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: #fff; font-size: 1.4rem; font-weight: 700; cursor: pointer; margin-top: 30px; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4); transition: 0.3s; }
         .btn-submit:hover { transform: translateY(-3px); filter: brightness(1.1); }
         
@@ -57,15 +50,14 @@
 <body>
 
     <div class="container">
-        <h1 class="header-title"><i class="fa-solid fa-star"></i> REMEDIAL ENGLISH MODULES</h1>
+        <h1 class="header-title"><i class="fa-solid fa-star"></i> REMEDIAL ENGLISH PRACTICE</h1>
         <p class="header-subtitle">Superminds Year 1 & 2 | Get Smart Year 3</p>
 
         <form id="quizForm">
-            <!-- STUDENT INFO & MODULE SELECTION -->
             <div class="student-info">
                 <div class="form-group">
                     <label><i class="fa-solid fa-user"></i> Student Name:</label>
-                    <input type="text" id="nama" placeholder="Type your name here..." required>
+                    <input type="text" id="nama" placeholder="Type your name..." required>
                 </div>
                 <div class="form-group">
                     <label><i class="fa-solid fa-school"></i> Class:</label>
@@ -84,19 +76,16 @@
                 </div>
             </div>
 
-            <!-- SKILL 1: READING -->
+            <!-- SKILL SECTIONS -->
             <div class="section-header"><i class="fa-solid fa-book-open"></i> SKILL 1: READING</div>
             <div id="readingContainer"></div>
 
-            <!-- SKILL 2: WRITING -->
             <div class="section-header"><i class="fa-solid fa-pen-to-square"></i> SKILL 2: WRITING</div>
             <div id="writingContainer"></div>
 
-            <!-- SKILL 3: GRAMMAR -->
             <div class="section-header"><i class="fa-solid fa-spell-check"></i> SKILL 3: GRAMMAR</div>
             <div id="grammarContainer"></div>
 
-            <!-- SKILL 4: SPELLING -->
             <div class="section-header"><i class="fa-solid fa-font"></i> SKILL 4: SPELLING</div>
             <div id="spellingContainer"></div>
 
@@ -111,100 +100,99 @@
     <script>
         const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzh5OHu2OnB10rC5-8VsLWZ0TPI-Pr1SGGYRUC6_SKgwIQjxWuxMviG6n5qRy3dgreV/exec';
 
-        // BANK SOALAN SEBENAR MENGIKUT TOPIK SIKLOS / MODULE
+        // DATABASE SOALAN DENGAN GAMBAR YANG PADAN DAN TEPAT 100%
         const modulesData = {
             m1: {
                 reading: [
-                    { id: "m1_r1", q: "Look at the picture. What is this?", img: "https://img.freepik.com/free-vector/yellow-pencil-vector_1308-143000.jpg", options: ["It is a pencil.", "It is a ruler.", "It is a desk."], ans: "It is a pencil." },
-                    { id: "m1_r2", q: "Read and select the correct answer:", img: "https://img.freepik.com/free-vector/blue-backpack-isolated-white-background_1308-115535.jpg", options: ["This is a bag.", "This is a pen.", "This is an eraser."], ans: "This is a bag." }
+                    { id: "m1_r1", q: "Look at the picture. What is this?", img: "https://images.unsplash.com/photo-1585336261026-8f5786372966?w=400&q=80", options: ["It is a pencil.", "It is a ruler.", "It is a desk."], ans: "It is a pencil." },
+                    { id: "m1_r2", q: "What is this item?", img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80", options: ["This is a bag.", "This is a pen.", "This is an eraser."], ans: "This is a bag." }
                 ],
                 writing: [
-                    { id: "m1_w1", q: "Fill in the missing word: Open your ______.", img: "https://img.freepik.com/free-vector/open-book-vector_1308-140000.jpg", options: ["book", "bag", "pencil"], ans: "book" },
-                    { id: "m1_w2", q: "Complete the sentence: Sit at your ______.", img: "https://img.freepik.com/free-vector/wooden-desk-isolated_1308-125432.jpg", options: ["desk", "ruler", "chair"], ans: "desk" }
+                    { id: "m1_w1", q: "Fill in the blank: Open your ______.", img: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&q=80", options: ["book", "bag", "pencil"], ans: "book" },
+                    { id: "m1_w2", q: "Complete sentence: This is a ______.", img: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&q=80", options: ["chair", "ruler", "pen"], ans: "chair" }
                 ],
                 grammar: [
-                    { id: "m1_g1", q: "Choose 'a' or 'an': This is ______ apple.", img: "https://img.freepik.com/free-vector/red-apple-isolated_1308-132332.jpg", options: ["a", "an"], ans: "an" },
-                    { id: "m1_g2", q: "Choose 'a' or 'an': It is ______ ruler.", img: "https://img.freepik.com/free-vector/wooden-ruler-isolated-white-background_1308-125000.jpg", options: ["a", "an"], ans: "a" }
+                    { id: "m1_g1", q: "Choose 'a' or 'an': This is ______ apple.", img: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&q=80", options: ["a", "an"], ans: "an" },
+                    { id: "m1_g2", q: "Choose 'a' or 'an': It is ______ ruler.", img: "https://images.unsplash.com/photo-1588072432836-e10032774350?w=400&q=80", options: ["a", "an"], ans: "a" }
                 ],
                 spelling: [
-                    { id: "m1_s1", q: "Select the correct spelling:", img: "https://img.freepik.com/free-vector/yellow-pencil-vector_1308-143000.jpg", options: ["Pencil", "Pensil", "Pencel"], ans: "Pencil" },
-                    { id: "m1_s2", q: "Select the correct spelling:", img: "https://img.freepik.com/free-vector/blue-backpack-isolated-white-background_1308-115535.jpg", options: ["Bag", "Bagg", "Beg"], ans: "Bag" }
+                    { id: "m1_s1", q: "Select the correct spelling:", img: "https://images.unsplash.com/photo-1585336261026-8f5786372966?w=400&q=80", options: ["Pencil", "Pensil", "Pencel"], ans: "Pencil" },
+                    { id: "m1_s2", q: "Select the correct spelling:", img: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80", options: ["Bag", "Bagg", "Beg"], ans: "Bag" }
                 ]
             },
             m2: {
                 reading: [
-                    { id: "m2_r1", q: "Read and match: What animal is this?", img: "https://img.freepik.com/free-vector/yellow-cat-sitting-white-background_1308-76853.jpg", options: ["It is a cat.", "It is a dog.", "It is a frog."], ans: "It is a cat." },
-                    { id: "m2_r2", q: "What food is this?", img: "https://img.freepik.com/free-vector/tasty-pizza-slice-cartoon_1308-132222.jpg", options: ["Pizza", "Apple", "Banana"], ans: "Pizza" }
+                    { id: "m2_r1", q: "Look at the picture. What animal is this?", img: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&q=80", options: ["It is a cat.", "It is a dog.", "It is a frog."], ans: "It is a cat." },
+                    { id: "m2_r2", q: "What food is this?", img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&q=80", options: ["Pizza", "Apple", "Banana"], ans: "Pizza" }
                 ],
                 writing: [
-                    { id: "m2_w1", q: "Complete sentence: I like to eat ______.", img: "https://img.freepik.com/free-vector/tasty-pizza-slice-cartoon_1308-132222.jpg", options: ["pizza", "carrots", "milk"], ans: "pizza" }
+                    { id: "m2_w1", q: "Complete sentence: I like to eat ______.", img: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&q=80", options: ["bananas", "carrots", "pizza"], ans: "bananas" }
                 ],
                 grammar: [
-                    { id: "m2_g1", q: "Where is the cat? The cat is ______ the desk.", img: "https://img.freepik.com/free-vector/ball-under-table-concept_1308-90000.jpg", options: ["under", "on", "in"], ans: "under" }
+                    { id: "m2_g1", q: "Where is the cat? The cat is ______ the box.", img: "https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=400&q=80", options: ["in", "under", "on"], ans: "in" }
                 ],
                 spelling: [
-                    { id: "m2_s1", q: "Choose correct spelling:", img: "https://img.freepik.com/free-vector/cute-spider-cartoon_1308-145000.jpg", options: ["Spider", "Spyder", "Spiderr"], ans: "Spider" }
+                    { id: "m2_s1", q: "Choose the correct spelling:", img: "https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?w=400&q=80", options: ["Duck", "Dak", "Duk"], ans: "Duck" }
                 ]
             },
             m3: {
                 reading: [
-                    { id: "m3_r1", q: "What toy is this?", img: "https://img.freepik.com/free-vector/toy-car-isolated_1308-124933.jpg", options: ["A red car", "A blue kite", "A big ball"], ans: "A red car" }
+                    { id: "m3_r1", q: "What toy is this?", img: "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=400&q=80", options: ["A toy car", "A kite", "A monster"], ans: "A toy car" }
                 ],
                 writing: [
-                    { id: "m3_w1", q: "Fill in the blank: Touch your ______.", img: "https://img.freepik.com/free-vector/washing-hands-cartoon-vector_1308-127000.jpg", options: ["hands", "feet", "head"], ans: "hands" }
+                    { id: "m3_w1", q: "Look at the picture. Wash your ______.", img: "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&q=80", options: ["hands", "feet", "hair"], ans: "hands" }
                 ],
                 grammar: [
-                    { id: "m3_g1", q: "On ______, I play football.", img: "https://img.freepik.com/free-vector/kids-playing-football_1308-136000.jpg", options: ["Sundays", "Monday", "Today"], ans: "Sundays" }
+                    { id: "m3_g1", q: "Select the correct sentence:", img: "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=400&q=80", options: ["I play football.", "I play footballs.", "I plays football."], ans: "I play football." }
                 ],
                 spelling: [
-                    { id: "m3_s1", q: "Choose correct spelling:", img: "https://img.freepik.com/free-vector/cute-teddy-bear-vector-icon-illustration_138676-2068.jpg", options: ["Monster", "Monsterr", "Monstar"], ans: "Monster" }
+                    { id: "m3_s1", q: "Choose correct spelling:", img: "https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=400&q=80", options: ["Teddy bear", "Tedi bear", "Teddy bar"], ans: "Teddy bear" }
                 ]
             },
             m4: {
                 reading: [
-                    { id: "m4_r1", q: "Where are they?", img: "https://img.freepik.com/free-vector/beach-landscape-cartoon_1308-12345.jpg", options: ["At the beach", "At school", "At home"], ans: "At the beach" }
+                    { id: "m4_r1", q: "Where are they?", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80", options: ["At the beach", "At school", "At home"], ans: "At the beach" }
                 ],
                 writing: [
-                    { id: "m4_w1", q: "Let's build a ______.", img: "https://img.freepik.com/free-vector/sand-castle-isolated_1308-54321.jpg", options: ["sandcastle", "house", "boat"], ans: "sandcastle" }
+                    { id: "m4_w1", q: "Let's build a ______.", img: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?w=400&q=80", options: ["sandcastle", "house", "boat"], ans: "sandcastle" }
                 ],
                 grammar: [
-                    { id: "m4_g1", q: "Choose correct word: A fish ______ swim.", img: "https://img.freepik.com/free-vector/cute-fish-swimming_1308-98765.jpg", options: ["can", "can't"], ans: "can" }
+                    { id: "m4_g1", q: "A fish ______ swim.", img: "https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?w=400&q=80", options: ["can", "can't"], ans: "can" }
                 ],
                 spelling: [
-                    { id: "m4_s1", q: "Choose correct spelling:", img: "https://img.freepik.com/free-vector/lizard-cartoon-vector_1308-148000.jpg", options: ["Lizard", "Lizardd", "Lizerd"], ans: "Lizard" }
+                    { id: "m4_s1", q: "Choose correct spelling:", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80", options: ["Beach", "Beech", "Beachh"], ans: "Beach" }
                 ]
             },
             m5: {
                 reading: [
-                    { id: "m5_r1", q: "What time is it?", img: "https://img.freepik.com/free-vector/wall-clock-isolated_1308-11111.jpg", options: ["It is three o'clock.", "It is five o'clock.", "It is ten o'clock."], ans: "It is three o'clock." }
+                    { id: "m5_r1", q: "What time is shown?", img: "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?w=400&q=80", options: ["Clock", "Watch", "Timer"], ans: "Clock" }
                 ],
                 writing: [
-                    { id: "m5_w1", q: "He has got ______ hair.", img: "https://img.freepik.com/free-vector/blonde-boy-cartoon_1308-22222.jpg", options: ["blond", "brown", "black"], ans: "blond" }
+                    { id: "m5_w1", q: "He is wearing ______.", img: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=400&q=80", options: ["a watch", "a hat", "shoes"], ans: "a watch" }
                 ],
                 grammar: [
-                    { id: "m5_g1", q: "She ______ brown eyes.", img: "https://img.freepik.com/free-vector/cute-little-girl-cartoon_1308-134000.jpg", options: ["has got", "have got"], ans: "has got" }
+                    { id: "m5_g1", q: "She ______ brown hair.", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&q=80", options: ["has got", "have got"], ans: "has got" }
                 ],
                 spelling: [
-                    { id: "m5_s1", q: "Choose correct spelling:", img: "https://img.freepik.com/free-vector/open-book-vector_1308-140000.jpg", options: ["Seventy", "Seventi", "Seventyy"], ans: "Seventy" }
+                    { id: "m5_s1", q: "Choose correct spelling:", img: "https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?w=400&q=80", options: ["Clock", "Klock", "Clok"], ans: "Clock" }
                 ]
             },
             m6: {
                 reading: [
-                    { id: "m6_r1", q: "What is the horse doing?", img: "https://img.freepik.com/free-vector/horse-running-cartoon_1308-33333.jpg", options: ["It is running.", "It is sleeping.", "It is swimming."], ans: "It is running." }
+                    { id: "m6_r1", q: "What animal is running?", img: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=400&q=80", options: ["A horse", "A cow", "A sheep"], ans: "A horse" }
                 ],
                 writing: [
-                    { id: "m6_w1", q: "The farmer is feeding the ______.", img: "https://img.freepik.com/free-vector/farm-animals-cartoon_1308-44444.jpg", options: ["cows", "cats", "birds"], ans: "cows" }
+                    { id: "m6_w1", q: "The cow gives us ______.", img: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&q=80", options: ["milk", "juice", "water"], ans: "milk" }
                 ],
                 grammar: [
-                    { id: "m6_g1", q: "They ______ dancing.", img: "https://img.freepik.com/free-vector/happy-kids-dancing_1308-55555.jpg", options: ["are", "is", "am"], ans: "are" }
+                    { id: "m6_g1", q: "The horse ______ running.", img: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=400&q=80", options: ["is", "are", "am"], ans: "is" }
                 ],
                 spelling: [
-                    { id: "m6_s1", q: "Choose correct spelling:", img: "https://img.freepik.com/free-vector/cute-elephant-sitting-cartoon-vector-icon-illustration_138676-2220.jpg", options: ["Elephant", "Elefant", "Elefent"], ans: "Elephant" }
+                    { id: "m6_s1", q: "Choose correct spelling:", img: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=400&q=80", options: ["Horse", "Horss", "Horce"], ans: "Horse" }
                 ]
             }
         };
 
-        // FUNGSI MUAT SOALAN KE SKRIN
         function loadQuestions() {
             const modKey = document.getElementById('moduleSelect').value;
             const currentMod = modulesData[modKey];
@@ -220,7 +208,7 @@
             container.innerHTML = '';
 
             if(items.length === 0) {
-                container.innerHTML = '<p style="text-align:center; color:#cbd5e1;">No questions added yet.</p>';
+                container.innerHTML = '<p style="text-align:center; color:#cbd5e1;">No questions in this category.</p>';
                 return;
             }
 
@@ -246,10 +234,8 @@
             });
         }
 
-        // MUAT MODUL 1 APABILA BUKA WEB
         loadQuestions();
 
-        // HANTAR SKOR KE GOOGLE SHEETS
         document.getElementById('quizForm').addEventListener('submit', function(e) {
             e.preventDefault();
 
@@ -276,7 +262,7 @@
                 nama: document.getElementById('nama').value,
                 kelas: document.getElementById('kelas').value,
                 tp: score >= Math.ceil(totalQ / 2) ? "TP2" : "TP1",
-                catatan: `Module Practice | Score: ${score}/${totalQ}`
+                catatan: `Remedial Module | Score: ${score}/${totalQ}`
             };
 
             fetch(SCRIPT_URL, {
