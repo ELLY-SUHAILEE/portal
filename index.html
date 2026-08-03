@@ -9,119 +9,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            color: #fff;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            text-align: center;
-        }
-
-        .profile-img {
-            width: 80px;
-            height: 80px;
-            background: #3b82f6;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            font-size: 35px;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-        }
-
-        h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        p.subtitle {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            margin-bottom: 25px;
-        }
-
-        .button-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 20px;
-            border-radius: 12px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            filter: brightness(1.1);
-        }
-
-        .btn i.left-icon {
-            font-size: 1.3rem;
-            width: 30px;
-        }
-
-        .btn-content {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        /* Warna Butang Moden */
-        .btn-hrmis {
-            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-        }
-
-        .btn-getsmart {
-            background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
-        }
-
-        .btn-sheets {
-            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
-        }
-
-        .btn-remedial {
-            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-        }
-
-        footer {
-            margin-top: 25px;
-            font-size: 0.8rem;
-            color: #64748b;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; color: #fff; }
+        .container { width: 100%; max-width: 600px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); text-align: center; }
+        .profile-img { width: 80px; height: 80px; background: #3b82f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-size: 35px; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); }
+        h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 5px; }
+        p.subtitle { color: #94a3b8; font-size: 0.9rem; margin-bottom: 25px; }
+        .button-grid { display: flex; flex-direction: column; gap: 15px; }
+        .btn { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-radius: 12px; text-decoration: none; color: #fff; font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.4); filter: brightness(1.1); }
+        .btn i.left-icon { font-size: 1.3rem; width: 30px; }
+        .btn-content { display: flex; align-items: center; gap: 12px; }
+        .btn-hrmis { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); }
+        .btn-getsmart { background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%); }
+        .btn-sheets { background: linear-gradient(135deg, #10b981 0%, #047857 100%); }
+        .btn-remedial { background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); }
+        footer { margin-top: 25px; font-size: 0.8rem; color: #64748b; }
     </style>
 </head>
 <body>
@@ -135,13 +38,13 @@
 
         <div class="button-grid">
             
-            <!-- 1. BUTANG DASHBOARD HRMIS (TERUS KE PORTAL UTAMA) -->
-            <a href="https://elly-suhailee.github.io/portal/" class="btn btn-hrmis">
+            <!-- 1. BUTANG DASHBOARD HRMIS -->
+            <a href="https://elly-suhailee.github.io/PPK-HRMIS-SK-KEBUN-BAHARU/" target="_blank" class="btn btn-hrmis">
                 <div class="btn-content">
                     <i class="fa-solid fa-chart-pie left-icon"></i>
                     <span>Dashboard PPK HRMIS</span>
                 </div>
-                <i class="fa-solid fa-arrow-right"></i>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
             </a>
 
             <!-- 2. BUTANG GET SMART YEAR 3 -->
