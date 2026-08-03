@@ -1,851 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ms">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Year 3 English: Module 9 - On Holiday Quiz</title>
-  <!-- Canvas Confetti Library for Score >= 80% -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-  <!-- jsPDF & html2canvas for PDF Download -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  
-  <style>
-    :root {
-      --bg-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      --card-bg: rgba(255, 255, 255, 0.95);
-      --text-color: #2d3748;
-      --text-muted: #718096;
-      --primary: #4c51bf;
-      --primary-hover: #434190;
-      --success: #38a169;
-      --error: #e53e3e;
-      --border-color: #e2e8f0;
-      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Pengurusan & Dashboard - Cikgu Suhailee</title>
+    <!-- Google Fonts & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-    [data-theme="dark"] {
-      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-      --card-bg: rgba(30, 41, 59, 0.95);
-      --text-color: #f8fafc;
-      --text-muted: #94a3b8;
-      --primary: #6366f1;
-      --primary-hover: #4f46e5;
-      --border-color: #334155;
-      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
-    }
+        body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+        }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            text-align: center;
+        }
 
-    body {
-      background: var(--bg-gradient);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      color: var(--text-color);
-    }
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            background: #3b82f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 35px;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+        }
 
-    .app-container {
-      width: 100%;
-      max-width: 750px;
-      background: var(--card-bg);
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      padding: 30px;
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(10px);
-    }
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
 
-    /* Header Controls */
-    .header-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
+        p.subtitle {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
 
-    .icon-btn {
-      background: transparent;
-      border: 1px solid var(--border-color);
-      color: var(--text-color);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 1.2rem;
-      transition: all 0.2s ease;
-    }
+        .button-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-    .icon-btn:hover {
-      background: var(--primary);
-      color: white;
-      border-color: var(--primary);
-    }
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
 
-    /* Views */
-    .view {
-      display: none;
-      animation: fadeIn 0.4s ease-in-out forwards;
-    }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            filter: brightness(1.1);
+        }
 
-    .view.active {
-      display: block;
-    }
+        .btn i.left-icon {
+            font-size: 1.3rem;
+            width: 30px;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        .btn-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-    /* Typography & Inputs */
-    h1, h2, h3 { text-align: center; margin-bottom: 15px; }
-    h1 { color: var(--primary); font-size: 2rem; }
-    p.subtitle { text-align: center; color: var(--text-muted); margin-bottom: 25px; }
+        /* Warna Butang Moden */
+        .btn-hrmis {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+        }
 
-    .form-group {
-      margin-bottom: 20px;
-    }
+        .btn-getsmart {
+            background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+        }
 
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: var(--text-color);
-    }
+        .btn-sheets {
+            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+        }
 
-    input[type="text"], select {
-      width: 100%;
-      padding: 12px 15px;
-      border: 2px solid var(--border-color);
-      border-radius: 10px;
-      background: transparent;
-      color: var(--text-color);
-      font-size: 1rem;
-      outline: none;
-    }
+        .btn-remedial {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+        }
 
-    input[type="text"]:focus, select:focus {
-      border-color: var(--primary);
-    }
-
-    .btn {
-      width: 100%;
-      padding: 14px;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-      transition: all 0.2s ease;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .btn:hover {
-      background: var(--primary-hover);
-      transform: translateY(-2px);
-    }
-
-    .btn:disabled {
-      background: #a0aec0;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .btn-secondary {
-      background: transparent;
-      border: 2px solid var(--primary);
-      color: var(--primary);
-    }
-
-    .btn-secondary:hover {
-      background: var(--primary);
-      color: white;
-    }
-
-    /* Quiz View Dashboard */
-    .quiz-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-      font-weight: bold;
-      font-size: 0.95rem;
-    }
-
-    .timer-bar-container {
-      width: 100%;
-      height: 8px;
-      background: var(--border-color);
-      border-radius: 4px;
-      margin-bottom: 20px;
-      overflow: hidden;
-    }
-
-    .timer-bar {
-      height: 100%;
-      width: 100%;
-      background: var(--primary);
-      transition: width 1s linear;
-    }
-
-    .progress-bar-container {
-      width: 100%;
-      height: 6px;
-      background: var(--border-color);
-      border-radius: 3px;
-      margin-bottom: 25px;
-      overflow: hidden;
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 0%;
-      background: var(--success);
-      transition: width 0.3s ease;
-    }
-
-    .question-card {
-      margin-bottom: 25px;
-    }
-
-    .question-text {
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-
-    .options-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
-
-    .option-btn {
-      padding: 14px 18px;
-      border: 2px solid var(--border-color);
-      border-radius: 12px;
-      background: transparent;
-      color: var(--text-color);
-      font-size: 1rem;
-      text-align: left;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-    }
-
-    .option-btn:hover:not([disabled]) {
-      border-color: var(--primary);
-      background: rgba(99, 102, 241, 0.05);
-    }
-
-    .option-btn.correct {
-      background: #c6f6d5 !important;
-      border-color: var(--success) !important;
-      color: #22543d !important;
-      font-weight: bold;
-    }
-
-    .option-btn.wrong {
-      background: #fed7d7 !important;
-      border-color: var(--error) !important;
-      color: #742a2a !important;
-    }
-
-    /* Result View */
-    .result-card {
-      text-align: center;
-      padding: 10px 0;
-    }
-
-    .badge {
-      font-size: 3.5rem;
-      margin-bottom: 10px;
-      animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    @keyframes pop {
-      0% { transform: scale(0); }
-      100% { transform: scale(1); }
-    }
-
-    .score-display {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: var(--primary);
-      margin: 10px 0;
-    }
-
-    .status-msg {
-      font-weight: 600;
-      margin-bottom: 20px;
-      padding: 10px;
-      border-radius: 8px;
-    }
-
-    .status-sync {
-      margin-top: 15px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-
-    .action-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    /* Review Answers */
-    .review-item {
-      padding: 15px;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      margin-bottom: 12px;
-      text-align: left;
-    }
-
-    .review-q { font-weight: bold; margin-bottom: 8px; }
-    .review-a { font-size: 0.9rem; margin-bottom: 4px; }
-    .review-a.user-wrong { color: var(--error); }
-    .review-a.correct-a { color: var(--success); font-weight: 600; }
-
-    /* Print styling */
-    @media print {
-      body { background: white; color: black; }
-      .app-container { box-shadow: none; width: 100%; max-width: 100%; }
-      .header-controls, .action-grid, .btn { display: none !important; }
-      .view { display: none !important; }
-      #result-view { display: block !important; }
-    }
-
-    @media (max-width: 600px) {
-      .app-container { padding: 20px; }
-      .action-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+        footer {
+            margin-top: 25px;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+    </style>
 </head>
 <body>
 
-  <div class="app-container" id="printable-area">
-    <!-- Header Controls -->
-    <div class="header-controls">
-      <button class="icon-btn" id="theme-btn" title="Toggle Dark/Light Mode">🌙</button>
-      <div style="font-weight: bold; color: var(--primary);">CEFR Year 3</div>
-      <button class="icon-btn" id="home-btn" title="Return to Login">🏠</button>
-    </div>
+    <div class="container">
+        <div class="profile-img">
+            <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <h1>PORTAL UTAMA SAYA</h1>
+        <p class="subtitle">Akses Pantas Laporan & Dashboard Pengurusan</p>
 
-    <!-- 1. LOGIN / START VIEW -->
-    <div id="login-view" class="view active">
-      <h1>Module 9: On Holiday</h1>
-      <p class="subtitle">Year 3 English Interactive Assessment</p>
-      
-      <form id="login-form">
-        <div class="form-group">
-          <label for="student-name">Student Full Name:</label>
-          <input type="text" id="student-name" placeholder="e.g. Adam Harith" required>
+        <div class="button-grid">
+            
+            <!-- 1. BUTANG DASHBOARD HRMIS -->
+            <a href="https://elly-suhailee.github.io/ppkhrmis/" target="_blank" class="btn btn-hrmis">
+                <div class="btn-content">
+                    <i class="fa-solid fa-chart-pie left-icon"></i>
+                    <span>Dashboard PPK HRMIS</span>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+            <!-- 2. BUTANG GET SMART YEAR 3 -->
+            <a href="https://elly-suhailee.github.io/getsmartyear3/" target="_blank" class="btn btn-getsmart">
+                <div class="btn-content">
+                    <i class="fa-solid fa-book-bookmark left-icon"></i>
+                    <span>Dashboard Get Smart Year 3</span>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+            <!-- 3. BUTANG GOOGLE SHEETS DATA GET SMART -->
+            <a href="https://script.google.com/macros/s/AKfycbxE1VmbtwtVKSlNuBMTQJnbMxZIYQXoz0C2fMePYBgCv5srU6VWrsgJyrl2RHOIrnMh/exec" target="_blank" class="btn btn-sheets">
+                <div class="btn-content">
+                    <i class="fa-solid fa-table left-icon"></i>
+                    <span>Google Sheets Data Get Smart</span>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
+            <!-- 4. BUTANG MODUL ENGLISH REMEDIAL (TP1 & TP2) -->
+            <a href="https://elly-suhailee.github.io/portal/remedial.html" target="_blank" class="btn btn-remedial">
+                <div class="btn-content">
+                    <i class="fa-solid fa-child-reaching left-icon"></i>
+                    <span>English Remedial (TP1 & TP2)</span>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
+
         </div>
 
-        <div class="form-group">
-          <label for="student-class">Class:</label>
-          <input type="text" id="student-class" placeholder="e.g. 3 Cemerlang" required>
-        </div>
-
-        <div class="form-group">
-          <label for="quiz-topic">Topic:</label>
-          <input type="text" id="quiz-topic" value="Module 9 – On Holiday" readonly style="background: rgba(0,0,0,0.05);">
-        </div>
-
-        <button type="submit" class="btn">Start Quiz 🚀</button>
-      </form>
-      <div id="high-score-display" style="text-align: center; margin-top: 20px; font-size: 0.9rem; color: var(--text-muted);"></div>
+        <footer>
+            SK Kebun Baharu &copy; 2026 | Portal Pengurusan
+        </footer>
     </div>
 
-    <!-- 2. QUIZ VIEW -->
-    <div id="quiz-view" class="view">
-      <div class="quiz-header">
-        <span id="question-tracker">Question 1/20</span>
-        <span id="score-tracker">Score: 0</span>
-        <span id="timer-display">⏱️ 15s</span>
-      </div>
-
-      <div class="timer-bar-container">
-        <div class="timer-bar" id="timer-bar"></div>
-      </div>
-
-      <div class="progress-bar-container">
-        <div class="progress-bar" id="progress-bar"></div>
-      </div>
-
-      <div class="question-card">
-        <div class="question-text" id="question-text">Loading question...</div>
-        <div class="options-grid" id="options-container"></div>
-      </div>
-    </div>
-
-    <!-- 3. RESULT VIEW -->
-    <div id="result-view" class="view">
-      <div class="result-card">
-        <div class="badge" id="result-badge">🏆</div>
-        <h2 id="result-title">Performance Message</h2>
-        <p class="subtitle" id="result-student-info">Student Info</p>
-        
-        <div class="score-display" id="result-score">0 / 20</div>
-        <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px;" id="result-percentage">0%</div>
-        <div class="status-msg" id="status-message">Calculating...</div>
-
-        <div class="status-sync" id="sync-status">Saving Score...</div>
-
-        <div class="action-grid">
-          <button class="btn btn-secondary" onclick="showReviewView()">Review Answers 📝</button>
-          <button class="btn" onclick="restartQuiz()">Retry Quiz 🔄</button>
-          <button class="btn btn-secondary" onclick="downloadPDF()">Download PDF 📄</button>
-          <button class="btn btn-secondary" onclick="window.print()">Print Result 🖨️</button>
-          <button class="btn btn-secondary" onclick="alert('Leaderboard Feature Coming Soon!')">Leaderboard 🏅</button>
-          <button class="btn btn-secondary" onclick="alert('Certificate Generator Coming Soon!')">Certificate 📜</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 4. REVIEW VIEW -->
-    <div id="review-view" class="view">
-      <h2>Answer Review</h2>
-      <div id="review-container" style="max-height: 400px; overflow-y: auto; margin-bottom: 20px;"></div>
-      <button class="btn" onclick="showResultView()">Back to Results ↩️</button>
-    </div>
-  </div>
-
-  <script>
-    /* ==========================================================================
-       1. QUESTION BANK (20 CEFR Year 3 Questions: Module 9 - On Holiday)
-       ========================================================================== */
-    const rawQuestions = [
-      // 5 Vocabulary
-      { category: 'Vocabulary', q: 'We went to the ________ to build sandcastles and swim in the sea.', options: ['beach', 'jungle', 'forest', 'mountain'], answer: 'beach' },
-      { category: 'Vocabulary', q: 'My brother caught a big ________ when we went fishing yesterday.', options: ['fish', 'shell', 'crab', 'boat'], answer: 'fish' },
-      { category: 'Vocabulary', q: 'Which transport travels on water?', options: ['Boat', 'Bus', 'Train', 'Plane'], answer: 'Boat' },
-      { category: 'Vocabulary', q: 'She picked up beautiful ________ on the beach.', options: ['shells', 'trees', 'clouds', 'cars'], answer: 'shells' },
-      { category: 'Vocabulary', q: 'We bought some nice ________ to remember our holiday.', options: ['souvenirs', 'homework', 'rubbish', 'pencils'], answer: 'souvenirs' },
-
-      // 5 Grammar (Simple Past Tense)
-      { category: 'Grammar', q: 'Yesterday, Ali ________ in the sea with his father.', options: ['swam', 'swim', 'swimming', 'swims'], answer: 'swam' },
-      { category: 'Grammar', q: 'They ________ go to the museum last weekend because it was closed.', options: ["didn't", "don't", "doesn't", "aren't"], answer: "didn't" },
-      { category: 'Grammar', q: 'I ________ a very big plane at the airport two days ago.', options: ['saw', 'see', 'seeing', 'sees'], answer: 'saw' },
-      { category: 'Grammar', q: 'What time did you ________ your breakfast yesterday morning?', options: ['eat', 'ate', 'eaten', 'eating'], answer: 'eat' },
-      { category: 'Grammar', q: 'Siti ________ a picture of the beach during her art lesson.', options: ['packed', 'paddled', 'took', 'played'], answer: 'took' },
-
-      // 5 Reading Comprehension
-      { category: 'Reading', q: 'Read and answer: "Last Saturday, Maya went to the island by boat. She took many photos." How did Maya go to the island?', options: ['By boat', 'By bus', 'By train', 'By car'], answer: 'By boat' },
-      { category: 'Reading', q: 'Read and answer: "Encik Rahim packed his bags and bought train tickets." What was Encik Rahim preparing for?', options: ['A holiday', 'A nap', 'A shower', 'A football match'], answer: 'A holiday' },
-      { category: 'Reading', q: 'Read and answer: "The sun was bright. Danial put on his sunglasses and swam." Where was Danial most likely at?', options: ['At the beach', 'At school', 'In a library', 'In a cinema'], answer: 'At the beach' },
-      { category: 'Reading', q: 'Read and answer: "We didn\'t pack warm clothes, so we felt very cold in the mountains." Why were they cold?', options: ['They didn\'t pack warm clothes', 'It was raining fish', 'They swam in ice', 'They lost their bags'], answer: 'They didn\'t pack warm clothes' },
-      { category: 'Reading', q: 'Read and answer: "Chen bought a key chain for his best friend." What did Chen buy?', options: ['A souvenir', 'A boat', 'A ticket', 'A sandcastle'], answer: 'A souvenir' },
-
-      // 5 Daily Conversation
-      { category: 'Conversation', q: 'A: Where did you go on holiday?\nB: ________________________', options: ['I went to Langkawi.', 'I am reading a book.', 'I like apples.', 'Yes, I do.'], answer: 'I went to Langkawi.' },
-      { category: 'Conversation', q: 'A: Did you enjoy your trip to the zoo?\nB: ________________________', options: ['Yes, I did! It was fun.', 'No, I am swimming.', 'Yes, I go by bus.', 'I pack my bag.'], answer: 'Yes, I did! It was fun.' },
-      { category: 'Conversation', q: 'A: How did you travel to Penang?\nB: ________________________', options: ['We traveled by car.', 'We ate delicious food.', 'Last week.', 'With my family.'], answer: 'We traveled by car.' },
-      { category: 'Conversation', q: 'A: What did you do at the beach?\nB: ________________________', options: ['I built a sandcastle.', 'I am fine, thank you.', 'It is sunny today.', 'I buy a shirt tomorrow.'], answer: 'I built a sandcastle.' },
-      { category: 'Conversation', q: 'A: Who did you go on holiday with?\nB: ________________________', options: ['I went with my family.', 'I went last Monday.', 'I went by plane.', 'I slept early.'], answer: 'I went with my family.' }
-    ];
-
-    /* ==========================================================================
-       2. STATE VARIABLES & CONFIGURATION
-       ========================================================================== */
-    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw1Fp1Y1cL3Qv3Yhg5W8RtFlDLEcEW8MdB3Kqly3eBoY_hatuQjOstDREpvuXkof_ne/exec";
-    
-    let currentQuestions = [];
-    let currentQuestionIndex = 0;
-    let score = 0;
-    let timer = null;
-    let timeLeft = 15;
-    let userAnswers = []; // Records user responses for review & sync
-    let isSubmitted = false;
-
-    // Student Data
-    let studentData = { name: '', class: '', topic: 'Module 9 – On Holiday' };
-
-    // Audio Effects (Web Audio API Synthesizer)
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    
-    function playSound(type) {
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-
-      if (type === 'correct') {
-        osc.frequency.setValueAtTime(523.25, audioCtx.currentTime); // C5
-        osc.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.1); // E5
-        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.25);
-      } else if (type === 'wrong') {
-        osc.frequency.setValueAtTime(220, audioCtx.currentTime); // A3
-        osc.frequency.setValueAtTime(174.61, audioCtx.currentTime + 0.1); // F3
-        gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 0.25);
-      }
-    }
-
-    /* ==========================================================================
-       3. DOM ELEMENTS
-       ========================================================================== */
-    const views = {
-      login: document.getElementById('login-view'),
-      quiz: document.getElementById('quiz-view'),
-      result: document.getElementById('result-view'),
-      review: document.getElementById('review-view')
-    };
-
-    const loginForm = document.getElementById('login-form');
-    const themeBtn = document.getElementById('theme-btn');
-    const homeBtn = document.getElementById('home-btn');
-
-    /* ==========================================================================
-       4. INITIALIZATION & HELPER FUNCTIONS
-       ========================================================================== */
-    window.addEventListener('DOMContentLoaded', () => {
-      loadHighScore();
-    });
-
-    // Theme Toggle
-    themeBtn.addEventListener('click', () => {
-      const currentTheme = document.body.getAttribute('data-theme');
-      if (currentTheme === 'dark') {
-        document.body.removeAttribute('data-theme');
-        themeBtn.textContent = '🌙';
-      } else {
-        document.body.setAttribute('data-theme', 'dark');
-        themeBtn.textContent = '☀️';
-      }
-    });
-
-    homeBtn.addEventListener('click', () => {
-      if (confirm('Return to Login? Your current quiz progress will be lost.')) {
-        clearInterval(timer);
-        switchView('login');
-      }
-    });
-
-    function switchView(viewName) {
-      Object.keys(views).forEach(key => {
-        views[key].classList.remove('active');
-      });
-      views[viewName].classList.add('active');
-    }
-
-    function shuffleArray(array) {
-      let arr = [...array];
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
-    }
-
-    /* ==========================================================================
-       5. QUIZ LOGIC
-       ========================================================================== */
-    loginForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      studentData.name = document.getElementById('student-name').value.trim();
-      studentData.class = document.getElementById('student-class').value.trim();
-
-      if (!studentData.name || !studentData.class) return;
-
-      startQuiz();
-    });
-
-    function startQuiz() {
-      // Reset State
-      score = 0;
-      currentQuestionIndex = 0;
-      userAnswers = [];
-      isSubmitted = false;
-
-      // Randomize questions & answers
-      currentQuestions = shuffleArray(rawQuestions).map(q => {
-        return {
-          ...q,
-          shuffledOptions: shuffleArray(q.options)
-        };
-      });
-
-      switchView('quiz');
-      loadQuestion();
-    }
-
-    function loadQuestion() {
-      clearInterval(timer);
-      
-      const q = currentQuestions[currentQuestionIndex];
-      
-      // Update Counters & Progress
-      document.getElementById('question-tracker').textContent = `Question ${currentQuestionIndex + 1}/${currentQuestions.length}`;
-      document.getElementById('score-tracker').textContent = `Score: ${score}`;
-      document.getElementById('progress-bar').style.width = `${((currentQuestionIndex) / currentQuestions.length) * 100}%`;
-
-      // Display Question
-      document.getElementById('question-text').textContent = q.q;
-
-      // Render Options
-      const optionsContainer = document.getElementById('options-container');
-      optionsContainer.innerHTML = '';
-
-      const labels = ['A', 'B', 'C', 'D'];
-      q.shuffledOptions.forEach((opt, idx) => {
-        const btn = document.createElement('button');
-        btn.className = 'option-btn';
-        btn.innerHTML = `<strong style="margin-right:8px;">${labels[idx]}.</strong> ${opt}`;
-        btn.onclick = () => handleAnswer(opt, btn);
-        optionsContainer.appendChild(btn);
-      });
-
-      // Start 15s Timer
-      startTimer();
-    }
-
-    function startTimer() {
-      timeLeft = 15;
-      const timerDisplay = document.getElementById('timer-display');
-      const timerBar = document.getElementById('timer-bar');
-      
-      timerDisplay.textContent = `⏱️ ${timeLeft}s`;
-      timerBar.style.width = '100%';
-
-      timer = setInterval(() => {
-        timeLeft--;
-        timerDisplay.textContent = `⏱️ ${timeLeft}s`;
-        timerBar.style.width = `${(timeLeft / 15) * 100}%`;
-
-        if (timeLeft <= 0) {
-          clearInterval(timer);
-          handleAnswer(null, null); // Time out
-        }
-      }, 1000);
-    }
-
-    function handleAnswer(selectedOption, optionBtn) {
-      clearInterval(timer);
-
-      const q = currentQuestions[currentQuestionIndex];
-      const buttons = document.querySelectorAll('.option-btn');
-      buttons.forEach(btn => btn.disabled = true);
-
-      let isCorrect = false;
-
-      if (selectedOption === q.answer) {
-        isCorrect = true;
-        score++;
-        playSound('correct');
-        if (optionBtn) optionBtn.classList.add('correct');
-      } else {
-        playSound('wrong');
-        if (optionBtn) optionBtn.classList.add('wrong');
-        // Highlight correct answer
-        buttons.forEach(btn => {
-          if (btn.textContent.includes(q.answer)) {
-            btn.classList.add('correct');
-          }
-        });
-      }
-
-      // Record answer
-      userAnswers.push({
-        question: q.q,
-        userAnswer: selectedOption || 'Time Out ⏱️',
-        correctAnswer: q.answer,
-        isCorrect: isCorrect
-      });
-
-      // Next Question Delay
-      setTimeout(() => {
-        currentQuestionIndex++;
-        if (currentQuestionIndex < currentQuestions.length) {
-          loadQuestion();
-        } else {
-          finishQuiz();
-        }
-      }, 1200);
-    }
-
-    /* ==========================================================================
-       6. RESULT & GOOGLE SHEETS INTEGRATION
-       ========================================================================== */
-    function finishQuiz() {
-      switchView('result');
-      
-      const total = currentQuestions.length;
-      const percentage = Math.round((score / total) * 100);
-
-      // UI Displays
-      document.getElementById('result-student-info').textContent = `${studentData.name} (${studentData.class}) - ${studentData.topic}`;
-      document.getElementById('result-score').textContent = `${score} / ${total}`;
-      document.getElementById('result-percentage').textContent = `${percentage}%`;
-
-      // Performance Message & Badges
-      const badgeEl = document.getElementById('result-badge');
-      const titleEl = document.getElementById('result-title');
-      const msgEl = document.getElementById('status-message');
-
-      if (percentage >= 90) {
-        badgeEl.textContent = '🌟';
-        titleEl.textContent = 'Outstanding!';
-        msgEl.textContent = 'Superb work! You are an English superstar!';
-        msgEl.style.background = 'rgba(56, 161, 105, 0.2)';
-      } else if (percentage >= 80) {
-        badgeEl.textContent = '🏆';
-        titleEl.textContent = 'Excellent!';
-        msgEl.textContent = 'Great job! You know your holiday vocabulary and grammar well!';
-        msgEl.style.background = 'rgba(56, 161, 105, 0.2)';
-      } else if (percentage >= 60) {
-        badgeEl.textContent = '👍';
-        titleEl.textContent = 'Good Job!';
-        msgEl.textContent = 'Well done! Keep practising to get an even higher score!';
-        msgEl.style.background = 'rgba(236, 201, 75, 0.2)';
-      } else {
-        badgeEl.textContent = '📚';
-        titleEl.textContent = 'Keep Practising!';
-        msgEl.textContent = 'Don\'t give up! Review Module 9 and try again!';
-        msgEl.style.background = 'rgba(229, 62, 62, 0.2)';
-      }
-
-      // Confetti Animation for >= 80%
-      if (percentage >= 80 && typeof confetti === 'function') {
-        confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
-      }
-
-      // Save High Score
-      saveHighScore(score, total);
-
-      // Submit Data to Google Apps Script
-      sendDataToGoogleSheets(percentage, total);
-    }
-
-    async function sendDataToGoogleSheets(percentage, total) {
-      if (isSubmitted) return;
-      isSubmitted = true;
-
-      const syncStatus = document.getElementById('sync-status');
-      syncStatus.textContent = "Saving Score...";
-      syncStatus.style.color = "var(--text-muted)";
-
-      const payload = {
-        studentName: studentData.name,
-        class: studentData.class,
-        topic: studentData.topic,
-        score: score,
-        total: total,
-        percentage: `${percentage}%`,
-        dateTime: new Date().toLocaleString('en-GB')
-      };
-
-      try {
-        const response = await fetch(APPS_SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors', // standard for Google Apps Script Web App redirects
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-
-        syncStatus.textContent = "Score Successfully Saved ✅";
-        syncStatus.style.color = "var(--success)";
-      } catch (error) {
-        console.error('Submission Error:', error);
-        syncStatus.textContent = "Unable to Save Score ❌";
-        syncStatus.style.color = "var(--error)";
-      }
-    }
-
-    /* ==========================================================================
-       7. REVIEW & LOCAL STORAGE
-       ========================================================================== */
-    function showReviewView() {
-      const reviewContainer = document.getElementById('review-container');
-      reviewContainer.innerHTML = '';
-
-      userAnswers.forEach((item, idx) => {
-        const div = document.createElement('div');
-        div.className = 'review-item';
-        div.innerHTML = `
-          <div class="review-q">${idx + 1}. ${item.question}</div>
-          <div class="review-a ${item.isCorrect ? 'correct-a' : 'user-wrong'}">
-            Your Answer: ${item.userAnswer} ${item.isCorrect ? '✓' : '✗'}
-          </div>
-          ${!item.isCorrect ? `<div class="review-a correct-a">Correct Answer: ${item.correctAnswer}</div>` : ''}
-        `;
-        reviewContainer.appendChild(div);
-      });
-
-      switchView('review');
-    }
-
-    function showResultView() {
-      switchView('result');
-    }
-
-    function restartQuiz() {
-      switchView('login');
-    }
-
-    function saveHighScore(currentScore, total) {
-      const saved = localStorage.getItem('year3_quiz_highscore') || 0;
-      if (currentScore > saved) {
-        localStorage.setItem('year3_quiz_highscore', currentScore);
-      }
-      loadHighScore();
-    }
-
-    function loadHighScore() {
-      const saved = localStorage.getItem('year3_quiz_highscore');
-      const display = document.getElementById('high-score-display');
-      if (saved !== null) {
-        display.textContent = `⭐ Personal High Score: ${saved} / 20`;
-      }
-    }
-
-    /* ==========================================================================
-       8. EXPORT & PRINT FEATURES
-       ========================================================================== */
-    function downloadPDF() {
-      const { jsPDF } = window.jspdf;
-      const element = document.getElementById('printable-area');
-
-      html2canvas(element, { scale: 2 }).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        const imgWidth = 210;
-        const pageHeight = 295;
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        
-        pdf.addImage(imgData, 'PNG', 0, 10, imgWidth, imgHeight);
-        pdf.save(`${studentData.name}_Module9_Quiz_Result.pdf`);
-      });
-    }
-  </script>
 </body>
 </html>
