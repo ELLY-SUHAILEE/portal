@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ms">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>English Portal & Remedial Hub</title>
+    <title>Portal Bahasa Inggeris - Utama</title>
     <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -13,196 +13,128 @@
         body { 
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
             min-height: 100vh; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
             padding: 20px; 
             color: #fff; 
         }
         .portal-card { 
-            max-width: 500px; 
-            width: 100%;
-            background: rgba(255, 255, 255, 0.07); 
-            backdrop-filter: blur(12px); 
+            background: rgba(255, 255, 255, 0.08); 
+            backdrop-filter: blur(16px); 
             border: 2px solid rgba(255, 255, 255, 0.15); 
             border-radius: 28px; 
-            padding: 35px 25px; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
-            text-align: center;
-        }
-        
-        .portal-title { 
-            color: #fbbf24; 
-            font-size: 2.2rem; 
-            margin-bottom: 8px; 
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
-        }
-        .portal-subtitle { 
-            color: #cbd5e1; 
-            font-size: 1.1rem; 
-            margin-bottom: 30px; 
-        }
-
-        /* Portal Navigation Buttons */
-        .btn-portal { 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
+            padding: 40px 30px; 
+            max-width: 500px; 
             width: 100%; 
-            padding: 18px; 
-            border-radius: 20px; 
-            text-decoration: none;
-            color: #fff; 
-            font-size: 1.3rem; 
+            text-align: center; 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
+        }
+        .main-title { 
+            font-size: 2.2rem; 
+            color: #fbbf24; 
+            margin-bottom: 10px; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.4); 
+        }
+        .sub-title { 
+            font-size: 1.1rem; 
+            color: #cbd5e1; 
+            margin-bottom: 35px; 
+        }
+        .btn-group { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 18px; 
+        }
+        .btn { 
+            padding: 18px 24px; 
+            border-radius: 18px; 
+            font-size: 1.2rem; 
             font-weight: 700; 
-            margin-bottom: 20px; 
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            text-decoration: none; 
+            color: #fff; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            gap: 12px; 
+            transition: all 0.3s ease; 
             border: none;
             cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
-
-        .btn-getsmart {
-            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-            border: 2px solid #38bdf8;
+        .btn:hover { 
+            transform: translateY(-3px) scale(1.02); 
+            filter: brightness(1.1); 
         }
-        .btn-getsmart:hover { transform: translateY(-4px); box-shadow: 0 12px 25px rgba(56, 189, 248, 0.4); }
-
-        .btn-remedial {
-            background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
-            border: 2px solid #fb923c;
-        }
-        .btn-remedial:hover { transform: translateY(-4px); box-shadow: 0 12px 25px rgba(251, 146, 60, 0.4); }
-
-        .btn-teacher {
-            background: linear-gradient(135deg, #4d7c0f 0%, #3f6212 100%);
-            border: 2px solid #a3e635;
-            margin-top: 10px;
-        }
-        .btn-teacher:hover { transform: translateY(-4px); box-shadow: 0 12px 25px rgba(163, 230, 53, 0.4); }
-
-        /* Modal Popup for Password */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(8px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
-        .modal-box {
-            background: #1e293b;
-            border: 2px solid #38bdf8;
-            border-radius: 24px;
-            padding: 30px;
-            max-width: 400px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.7);
-        }
-        .modal-title { font-size: 1.5rem; color: #fbbf24; margin-bottom: 15px; }
-        .modal-input {
-            width: 100%; padding: 14px; border-radius: 12px; border: 2px solid #38bdf8;
-            background: #0f172a; color: #fff; font-size: 1.2rem; text-align: center;
-            outline: none; margin-bottom: 15px;
-        }
-        .modal-btn {
-            width: 100%; padding: 12px; border-radius: 12px; border: none;
-            background: #38bdf8; color: #0f172a; font-size: 1.1rem; font-weight: 700;
-            cursor: pointer; transition: 0.2s;
-        }
-        .modal-btn:hover { background: #7dd3fc; }
-        .modal-close { display: block; margin-top: 15px; color: #94a3b8; text-decoration: none; font-size: 0.95rem; cursor: pointer; }
         
-        .sheet-links { display: none; margin-top: 15px; }
-        .sheet-btn {
-            display: block; width: 100%; padding: 12px; margin-bottom: 10px;
-            border-radius: 10px; background: #10b981; color: #fff;
-            text-decoration: none; font-weight: 700; transition: 0.2s;
+        /* Butang Modul Utama */
+        .btn-getsmart { 
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%); 
         }
-        .sheet-btn:hover { background: #059669; }
+        .btn-remedial { 
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); 
+        }
+        
+        /* Butang Rekod Guru (Akses Khas) */
+        .btn-teacher { 
+            background: linear-gradient(135deg, #10b981 0%, #047857 100%); 
+            margin-top: 10px;
+            border: 2px dashed #6ee7b7;
+        }
+
+        .footer-text { 
+            margin-top: 30px; 
+            font-size: 0.9rem; 
+            color: #94a3b8; 
+        }
     </style>
 </head>
 <body>
 
     <div class="portal-card">
-        <h1 class="portal-title"><i class="fa-solid fa-graduation-cap"></i> ENGLISH PORTAL</h1>
-        <p class="portal-subtitle">SK Kebun Baharu Learning Hub</p>
+        <h1 class="main-title"><i class="fa-solid fa-graduation-cap"></i> ENGLISH PORTAL</h1>
+        <p class="sub-title">Sila pilih modul pembelajaran anda</p>
 
-        <!-- Murid Access -->
-        <a href="quiz.html" class="btn-portal btn-getsmart">
-            <i class="fa-solid fa-book-open"></i> GET SMART YEAR 3
-        </a>
+        <div class="btn-group">
+            <!-- 1. Modul Get Smart Year 3 (Asal) -->
+            <a href="quiz.html" class="btn btn-getsmart">
+                <i class="fa-solid fa-rocket"></i> Get Smart Year 3
+            </a>
 
-        <a href="remedial.html" class="btn-portal btn-remedial">
-            <i class="fa-solid fa-hands-holding-child"></i> REMEDIAL (TP1 & TP2)
-        </a>
+            <!-- 2. Modul Pemulihan (Khas TP1 & TP2) -->
+            <a href="remedial.html" class="btn btn-remedial">
+                <i class="fa-solid fa-star"></i> Remedial Practice (TP1 & TP2)
+            </a>
 
-        <hr style="border: 0.5px solid rgba(255,255,255,0.1); margin: 25px 0;">
-
-        <!-- Guru Access -->
-        <button class="btn-portal btn-teacher" onclick="openPasswordModal()">
-            <i class="fa-solid fa-lock"></i> REKOD GURU
-        </button>
-    </div>
-
-    <!-- MODAL POPUP KATA LALUAN GURU -->
-    <div class="modal-overlay" id="teacherModal">
-        <div class="modal-box">
-            <h3 class="modal-title"><i class="fa-solid fa-user-shield"></i> Akses Guru</h3>
-            
-            <div id="passwordForm">
-                <p style="color: #cbd5e1; font-size: 0.95rem; margin-bottom: 15px;">Sila masukkan kata laluan untuk mengakses Google Sheet Rekod Murid:</p>
-                <input type="password" id="passInput" class="modal-input" placeholder="Masukkan Password">
-                <button class="modal-btn" onclick="verifyPassword()">LULUSKAN AKSES</button>
-                <p id="errorMsg" style="color: #ef4444; font-size: 0.9rem; margin-top: 10px; display: none;">❌ Kata laluan salah!</p>
-            </div>
-
-            <!-- Paparan Pautan Google Sheet Selepas Password Betul -->
-            <div id="sheetLinks" class="sheet-links">
-                <p style="color: #10b981; font-weight: 700; margin-bottom: 15px;">✅ Akses Diterima! Pilih rekod:</p>
-                
-                <!-- Pautan Sheet Get Smart Year 3 -->
-                <a href="https://docs.google.com/spreadsheets/d/1X3mUaM3dOnvYQ4hQeG5G_ZzKByy-Hw8Zf8vD9fJd3X0/edit" target="_blank" class="sheet-btn">
-                    <i class="fa-solid fa-file-excel"></i> Rekod Get Smart Year 3
-                </a>
-                
-                <!-- Pautan Sheet Remedial -->
-                <a href="https://docs.google.com/spreadsheets/d/1X3mUaM3dOnvYQ4hQeG5G_ZzKByy-Hw8Zf8vD9fJd3X0/edit" target="_blank" class="sheet-btn" style="background: #f97316;">
-                    <i class="fa-solid fa-file-csv"></i> Rekod Pemulihan (Remedial)
-                </a>
-            </div>
-
-            <span class="modal-close" onclick="closePasswordModal()">Tutup</span>
+            <!-- 3. Butang Rekod Guru (Khas Guru Sahaja) -->
+            <button onclick="accessTeacherRecord()" class="btn btn-teacher">
+                <i class="fa-solid fa-user-lock"></i> Rekod Guru
+            </button>
         </div>
+
+        <p class="footer-text">Akses khas cikgu dilindungi kata laluan.</p>
     </div>
 
     <script>
-        // KATA LALUAN GURU (Cikgu boleh tukar 'guru2026' ke kata laluan pilihan sendiri)
-        const TEACHER_PASSWORD = "guru2026";
+        // MASUKKAN PAUTAN GOOGLE SHEET CIKGU DI SINI:
+        const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/1cBsiuCRK4KBL3_oSi0nka5iL7VA1rQJTJzeMdWL1EDc/edit?gid=0#gid=0'; 
+        
+        // TETAPKAN KATA LALUAN (PASSWORD) CIKGU DI SINI:
+        const TEACHER_PASSWORD = '123'; 
 
-        function openPasswordModal() {
-            document.getElementById('teacherModal').style.display = 'flex';
-            document.getElementById('passInput').value = '';
-            document.getElementById('errorMsg').style.display = 'none';
-            document.getElementById('passwordForm').style.display = 'block';
-            document.getElementById('sheetLinks').style.display = 'none';
-        }
-
-        function closePasswordModal() {
-            document.getElementById('teacherModal').style.display = 'none';
-        }
-
-        function verifyPassword() {
-            const input = document.getElementById('passInput').value;
-            if (input === TEACHER_PASSWORD) {
-                document.getElementById('passwordForm').style.display = 'none';
-                document.getElementById('sheetLinks').style.display = 'block';
+        function accessTeacherRecord() {
+            let pass = prompt("Sila masukkan kata laluan Guru untuk mengakses Rekod Guru:");
+            
+            if (pass === null) {
+                // Jika cikgu tekan Cancel, tiada apa berlaku
+                return; 
+            }
+            
+            if (pass === TEACHER_PASSWORD) {
+                alert("Akses berjaya! Mengalihkan ke Rekod Guru...");
+                window.open(GOOGLE_SHEET_URL, '_blank');
             } else {
-                document.getElementById('errorMsg').style.display = 'block';
+                alert("Kata laluan salah! Akses ditolak.");
             }
         }
     </script>
