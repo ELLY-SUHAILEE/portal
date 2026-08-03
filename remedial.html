@@ -78,7 +78,7 @@
             <i class="fa-solid fa-spell-check" style="font-size: 2rem; color: #9333ea;"></i>
             <h2>2. Spelling Practice</h2>
         </div>
-        <p style="font-size: 1.4rem; font-weight: bold; text-align: center;">Fill in the missing letter:</p>
+        <p style="font-size: 1.4rem; font-weight: bold; text-align: center; color: #475569;">Fill in the missing letter:</p>
         <div class="big-visual" id="spell-visual"></div>
         <div style="text-align: center;">
             <p style="font-size: 2rem; font-weight: bold; color: #7e22ce;" id="spell-hint"></p>
@@ -94,7 +94,7 @@
             <h2>3. Vocabulary Drill</h2>
         </div>
         <div class="big-visual" id="vocab-visual"></div>
-        <p style="font-size: 1.4rem; font-weight: bold; text-align: center; color: #334155;" id="vocab-question">What is this object?</p>
+        <p style="font-size: 1.4rem; font-weight: bold; text-align: center; color: #334155;" id="vocab-question">What object is this?</p>
         <div class="options-grid" id="vocab-options"></div>
     </div>
 
@@ -113,7 +113,7 @@
             spellHint: "C H A _ R",
             spellAns: "I",
             vocabVisual: "✏️",
-            vocabQ: "What is this object?",
+            vocabQ: "What object is this?",
             vocabOpts: [{t: "Pencil", c: true}, {t: "Ruler", c: false}]
         },
         2: {
@@ -235,7 +235,7 @@
 
         // Load Vocabulary
         document.getElementById("vocab-visual").innerText = data.vocabVisual;
-        document.getElementById("vocab-question").innerText = data.vocabQ || "What is this object?";
+        document.getElementById("vocab-question").innerText = data.vocabQ || "What object is this?";
         const vocabOpts = document.getElementById("vocab-options");
         vocabOpts.innerHTML = "";
         data.vocabOpts.forEach(opt => {
