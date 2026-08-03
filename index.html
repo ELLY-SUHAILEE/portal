@@ -3,180 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal Pengurusan & Dashboard - Cikgu Suhailee</title>
-    <!-- Google Fonts & FontAwesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Dashboard PPK HRMIS - SK Kebun Baharu</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #f8fafc; color: #1e293b; padding: 20px; }
 
-        body {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            min-height: 100vh;
+        .header-bar {
+            max-width: 1100px;
+            margin: 0 auto 20px;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            padding: 20px;
-            color: #fff;
+            background: #ffffff;
+            padding: 15px 25px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
         }
 
-        .container {
-            width: 100%;
-            max-width: 600px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-            text-align: center;
-        }
+        .header-title h1 { font-size: 1.4rem; color: #0284c7; }
+        .header-title p { font-size: 0.85rem; color: #64748b; }
 
-        .profile-img {
-            width: 80px;
-            height: 80px;
-            background: #3b82f6;
-            border-radius: 50%;
-            display: flex;
+        .btn-group { display: flex; gap: 10px; }
+
+        .btn-action {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 15px;
-            font-size: 35px;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-        }
-
-        h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        p.subtitle {
-            color: #94a3b8;
+            gap: 8px;
+            padding: 10px 18px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
             font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .btn-print { background-color: #0284c7; color: white; }
+        .btn-print:hover { background-color: #0369a1; }
+
+        .btn-back { background-color: #e2e8f0; color: #334155; }
+        .btn-back:hover { background-color: #cbd5e1; }
+
+        /* Dashboard Container */
+        .dashboard-card {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
             margin-bottom: 25px;
         }
 
-        .button-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 20px;
+        .stat-box {
+            background: #f1f5f9;
+            padding: 20px;
             border-radius: 12px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border-left: 5px solid #0284c7;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-            filter: brightness(1.1);
-        }
+        .stat-box h3 { font-size: 0.85rem; color: #64748b; text-transform: uppercase; }
+        .stat-box .number { font-size: 1.8rem; font-weight: 700; color: #0f172a; margin-top: 5px; }
 
-        .btn i.left-icon {
-            font-size: 1.3rem;
-            width: 30px;
-        }
-
-        .btn-content {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        /* Warna Butang Moden */
-        .btn-hrmis {
-            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-        }
-
-        .btn-getsmart {
-            background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
-        }
-
-        .btn-sheets {
-            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
-        }
-
-        .btn-remedial {
-            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
-        }
-
-        footer {
-            margin-top: 25px;
-            font-size: 0.8rem;
-            color: #64748b;
+        /* Hide buttons during print */
+        @media print {
+            .header-bar, .btn-group { display: none !important; }
+            body { background: white; padding: 0; }
+            .dashboard-card { box-shadow: none; padding: 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <div class="profile-img">
-            <i class="fa-solid fa-graduation-cap"></i>
+    <!-- BAR ATAS: HEADER & BUTANG KAWALAN -->
+    <div class="header-bar">
+        <div class="header-title">
+            <h1>DASHBOARD PPK HRMIS</h1>
+            <p>SK Kebun Baharu — Pengurusan Maklumat & Laporan</p>
         </div>
-        <h1>PORTAL UTAMA SAYA</h1>
-        <p class="subtitle">Akses Pantas Laporan & Dashboard Pengurusan</p>
-
-        <div class="button-grid">
-            
-            <!-- 1. BUTANG DASHBOARD HRMIS (URL DAH DIBETULKAN) -->
-            <a href="https://elly-suhailee.github.io/PPK-HRMIS-SK-KEBUN-BAHARU/" target="_blank" class="btn btn-hrmis">
-                <div class="btn-content">
-                    <i class="fa-solid fa-chart-pie left-icon"></i>
-                    <span>Dashboard PPK HRMIS</span>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        <div class="btn-group">
+            <!-- Butang Cetak Manual (Hanya bila ditekan sahaja) -->
+            <button class="btn-action btn-print" onclick="window.print()">
+                <i class="fa-solid fa-print"></i> Cetak / Simpan PDF
+            </button>
+            <!-- Butang Kembali ke Portal Utama -->
+            <a href="https://elly-suhailee.github.io/portal/" class="btn-action btn-back">
+                <i class="fa-solid fa-house"></i> Portal Utama
             </a>
+        </div>
+    </div>
 
-            <!-- 2. BUTANG GET SMART YEAR 3 -->
-            <a href="https://elly-suhailee.github.io/getsmartyear3/" target="_blank" class="btn btn-getsmart">
-                <div class="btn-content">
-                    <i class="fa-solid fa-book-bookmark left-icon"></i>
-                    <span>Dashboard Get Smart Year 3</span>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-
-            <!-- 3. BUTANG GOOGLE SHEETS DATA GET SMART -->
-            <a href="https://script.google.com/macros/s/AKfycbxE1VmbtwtVKSlNuBMTQJnbMxZIYQXoz0C2fMePYBgCv5srU6VWrsgJyrl2RHOIrnMh/exec" target="_blank" class="btn btn-sheets">
-                <div class="btn-content">
-                    <i class="fa-solid fa-table left-icon"></i>
-                    <span>Google Sheets Data Get Smart</span>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-
-            <!-- 4. BUTANG MODUL ENGLISH REMEDIAL (TP1 & TP2) -->
-            <a href="remedial.html" target="_blank" class="btn btn-remedial">
-                <div class="btn-content">
-                    <i class="fa-solid fa-child-reaching left-icon"></i>
-                    <span>English Remedial (TP1 & TP2)</span>
-                </div>
-                <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-
+    <!-- KANDUNGAN UTAMA DASHBOARD -->
+    <div class="dashboard-card">
+        
+        <!-- RINGKASAN REKOD -->
+        <div class="stats-grid">
+            <div class="stat-box" style="border-color: #0284c7;">
+                <h3>Jumlah Anggota (PPK)</h3>
+                <div class="number">--</div>
+            </div>
+            <div class="stat-box" style="border-color: #10b981;">
+                <h3>Penyemakan Selesai</h3>
+                <div class="number">--</div>
+            </div>
+            <div class="stat-box" style="border-color: #f59e0b;">
+                <h3>Dalam Proses</h3>
+                <div class="number">--</div>
+            </div>
+            <div class="stat-box" style="border-color: #ef4444;">
+                <h3>Tindakan Belum Selesai</h3>
+                <div class="number">--</div>
+            </div>
         </div>
 
-        <footer>
-            SK Kebun Baharu &copy; 2026 | Portal Pengurusan
-        </footer>
+        <!-- RUANGAN PAPARAN DATA / EMBED LOOKER STUDIO -->
+        <div style="text-align: center; padding: 40px 20px; background: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 12px;">
+            <i class="fa-solid fa-chart-column" style="font-size: 3rem; color: #94a3b8; margin-bottom: 15px;"></i>
+            <h2 style="font-size: 1.2rem; color: #334155; margin-bottom: 8px;">Paparan Data Dashboard PPK HRMIS</h2>
+            <p style="color: #64748b; font-size: 0.9rem;">Sistem sedia untuk digunakan. Tiada gangguan popup cetak secara automatik.</p>
+        </div>
+
     </div>
 
 </body>
 </html>
+
