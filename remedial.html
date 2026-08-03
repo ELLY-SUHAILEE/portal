@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
         .title-box { text-align: center; background: #ffedd5; border: 3px dashed #f97316; border-radius: 16px; padding: 15px; margin-bottom: 20px; }
         .title-box h1 { font-family: 'Fredoka One', cursive; color: #ea580c; font-size: 2.2rem; }
         
-        /* Menu Pilih Set */
+        /* Set Menu */
         .set-menu { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 15px; margin-bottom: 20px; scrollbar-width: thin; }
         .btn-set { background: #e2e8f0; color: #334155; border: 2px solid #cbd5e1; padding: 10px 18px; border-radius: 12px; font-weight: bold; font-size: 1.1rem; cursor: pointer; white-space: nowrap; transition: 0.2s; }
         .btn-set.active { background: #ea580c; color: white; border-color: #c2410c; transform: scale(1.05); }
@@ -26,7 +26,7 @@
         .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 15px; }
         .card-header h2 { font-family: 'Fredoka One', cursive; font-size: 1.8rem; color: #0284c7; }
 
-        /* Reading Passage Style (Font Besar) */
+        /* Reading Passage Style */
         .passage-box { background: #eff6ff; border-left: 8px solid #3b82f6; padding: 20px; border-radius: 12px; font-size: 1.6rem; line-height: 2.3rem; color: #1e293b; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
         .btn-audio { background: #22c55e; color: white; border: none; width: 60px; height: 60px; border-radius: 50%; font-size: 1.8rem; cursor: pointer; box-shadow: 0 4px 10px rgba(34,197,94,0.4); flex-shrink: 0; }
         .btn-audio:active { transform: scale(0.95); }
@@ -41,7 +41,7 @@
         .btn-option.correct { background: #dcfce7 !important; border-color: #22c55e !important; color: #15803d !important; }
         .btn-option.wrong { background: #fee2e2 !important; border-color: #ef4444 !important; color: #b91c1c !important; }
 
-        /* Input Ejaan Besar */
+        /* Big Spelling Input */
         .spelling-input { width: 100%; font-size: 2rem; text-align: center; letter-spacing: 5px; padding: 10px; border: 3px solid #94a3b8; border-radius: 12px; margin-top: 10px; text-transform: uppercase; font-weight: bold; }
     </style>
 </head>
@@ -54,14 +54,14 @@
         <p id="set-title" style="font-size: 1.2rem; font-weight: bold; color: #c2410c;">Loading...</p>
     </div>
 
-    <!-- MENU SET 1 - 20 -->
+    <!-- SET MENU 1 - 20 -->
     <div class="set-menu" id="set-menu-container"></div>
 
     <!-- PART 1: READING SHORT PASSAGE -->
     <div class="card">
         <div class="card-header">
             <i class="fa-solid fa-book-open-reader" style="font-size: 2rem; color: #0284c7;"></i>
-            <h2>1. Read Together (BACA)</h2>
+            <h2>1. Read Together</h2>
         </div>
         <div class="passage-box">
             <span id="text-to-read"></span>
@@ -76,9 +76,9 @@
     <div class="card">
         <div class="card-header">
             <i class="fa-solid fa-spell-check" style="font-size: 2rem; color: #9333ea;"></i>
-            <h2>2. Spelling (EJAAN)</h2>
+            <h2>2. Spelling Practice</h2>
         </div>
-        <p style="font-size: 1.4rem; font-weight: bold; text-align: center;">Isi huruf yang hilang:</p>
+        <p style="font-size: 1.4rem; font-weight: bold; text-align: center;">Fill in the missing letter:</p>
         <div class="big-visual" id="spell-visual"></div>
         <div style="text-align: center;">
             <p style="font-size: 2rem; font-weight: bold; color: #7e22ce;" id="spell-hint"></p>
@@ -91,17 +91,17 @@
     <div class="card">
         <div class="card-header">
             <i class="fa-solid fa-shapes" style="font-size: 2rem; color: #16a34a;"></i>
-            <h2>3. Vocabulary (KOSA KATA)</h2>
+            <h2>3. Vocabulary Drill</h2>
         </div>
         <div class="big-visual" id="vocab-visual"></div>
-        <p style="font-size: 1.4rem; font-weight: bold; text-align: center; color: #334155;" id="vocab-question">Apakah nama benda ini?</p>
+        <p style="font-size: 1.4rem; font-weight: bold; text-align: center; color: #334155;" id="vocab-question">What is this object?</p>
         <div class="options-grid" id="vocab-options"></div>
     </div>
 
 </div>
 
 <script>
-    // DATA SET SOALAN (1 hingga 5 dimasukkan dahulu)
+    // QUESTION DATASETS
     const datasets = {
         1: {
             title: "Set 1: My Classroom (Year 1)",
@@ -113,6 +113,7 @@
             spellHint: "C H A _ R",
             spellAns: "I",
             vocabVisual: "✏️",
+            vocabQ: "What is this object?",
             vocabOpts: [{t: "Pencil", c: true}, {t: "Ruler", c: false}]
         },
         2: {
@@ -125,6 +126,7 @@
             spellHint: "B A _ L",
             spellAns: "L",
             vocabVisual: "🚗",
+            vocabQ: "What toy is this?",
             vocabOpts: [{t: "Doll", c: false}, {t: "Car", c: true}]
         },
         3: {
@@ -137,6 +139,7 @@
             spellHint: "D _ G",
             spellAns: "O",
             vocabVisual: "🐸",
+            vocabQ: "What animal is this?",
             vocabOpts: [{t: "Frog", c: true}, {t: "Duck", c: false}]
         },
         4: {
@@ -149,6 +152,7 @@
             spellHint: "B A N A _ A",
             spellAns: "N",
             vocabVisual: "🥛",
+            vocabQ: "What drink is this?",
             vocabOpts: [{t: "Milk", c: true}, {t: "Water", c: false}]
         },
         5: {
@@ -161,13 +165,14 @@
             spellHint: "F O O T B A _ L",
             spellAns: "L",
             vocabVisual: "🏊",
+            vocabQ: "What activity is this?",
             vocabOpts: [{t: "Swimming", c: true}, {t: "Dancing", c: false}]
         }
     };
 
     let currentSet = 1;
 
-    // Render Menu Butang Set 1-20
+    // Render Set Buttons (Set 1 - 20)
     function renderMenu() {
         const menu = document.getElementById("set-menu-container");
         menu.innerHTML = "";
@@ -180,23 +185,24 @@
         }
     }
 
-    // Load Data Set
+    // Load Selected Set
     function loadSet(setNum) {
         currentSet = setNum;
         renderMenu();
 
         const data = datasets[setNum];
         
-        // Reset jika set belum dimasukkan
+        // Default if set is coming soon
         if(!data) {
-            document.getElementById("set-title").innerText = `Set ${setNum} (Akan Datang)`;
-            document.getElementById("text-to-read").innerText = "Soalan untuk set ini sedang dikemaskini...";
+            document.getElementById("set-title").innerText = `Set ${setNum} (Coming Soon)`;
+            document.getElementById("text-to-read").innerText = "Questions for this set are being updated...";
             document.getElementById("read-visual").innerText = "⏳";
             document.getElementById("read-question").innerText = "";
             document.getElementById("read-options").innerHTML = "";
             document.getElementById("spell-visual").innerText = "⏳";
             document.getElementById("spell-hint").innerText = "- - -";
             document.getElementById("vocab-visual").innerText = "⏳";
+            document.getElementById("vocab-question").innerText = "";
             document.getElementById("vocab-options").innerHTML = "";
             return;
         }
@@ -207,7 +213,7 @@
         document.getElementById("read-visual").innerText = data.readVisual;
         document.getElementById("read-question").innerText = data.readQ;
 
-        // Options Reading
+        // Load Reading Options
         const readOpts = document.getElementById("read-options");
         readOpts.innerHTML = "";
         data.readOpts.forEach(opt => {
@@ -218,7 +224,7 @@
             readOpts.appendChild(btn);
         });
 
-        // Spelling Load
+        // Load Spelling
         document.getElementById("spell-visual").innerText = data.spellVisual;
         document.getElementById("spell-hint").innerText = data.spellHint;
         const input = document.getElementById("spell-input");
@@ -227,8 +233,9 @@
         input.style.borderColor = "#94a3b8";
         document.getElementById("spelling-msg").innerText = "";
 
-        // Vocab Load
+        // Load Vocabulary
         document.getElementById("vocab-visual").innerText = data.vocabVisual;
+        document.getElementById("vocab-question").innerText = data.vocabQ || "What is this object?";
         const vocabOpts = document.getElementById("vocab-options");
         vocabOpts.innerHTML = "";
         data.vocabOpts.forEach(opt => {
@@ -240,6 +247,7 @@
         });
     }
 
+    // Audio Play Function
     function playAudio() {
         const text = document.getElementById("text-to-read").innerText;
         const utterance = new SpeechSynthesisUtterance(text);
@@ -248,16 +256,18 @@
         window.speechSynthesis.speak(utterance);
     }
 
+    // Answer Checking
     function checkAnswer(btn, isCorrect) {
         if(isCorrect) {
             btn.classList.add("correct");
-            btn.innerText += " 👏";
+            btn.innerText += " 👏 (Correct!)";
         } else {
             btn.classList.add("wrong");
-            btn.innerText += " ❌";
+            btn.innerText += " ❌ (Try Again)";
         }
     }
 
+    // Spelling Checking
     function checkSpelling(input) {
         const data = datasets[currentSet];
         const msg = document.getElementById("spelling-msg");
@@ -267,16 +277,16 @@
             input.style.borderColor = "#22c55e";
             input.style.backgroundColor = "#dcfce7";
             msg.style.color = "#15803d";
-            msg.innerText = "Tahniah! Jawapan Betul 🎉";
+            msg.innerText = "Great job! That's correct 🎉";
         } else if(input.value !== "") {
             input.style.borderColor = "#ef4444";
             input.style.backgroundColor = "#fee2e2";
             msg.style.color = "#b91c1c";
-            msg.innerText = "Salah, cuba lagi 😅";
+            msg.innerText = "Incorrect. Try another letter 😅";
         }
     }
 
-    // First Init
+    // Initialize Page
     loadSet(1);
 </script>
 
